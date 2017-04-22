@@ -58,23 +58,39 @@ var buildTree = function(role, dialog) {
 	dialog.appendChild(tree);
 };
 
-var quickNav = function(selector) {
+var updateVisiblePane = function(select, dialog) {
+	var trees = aria.querySelectorAll(dialog, 'tree');
+	Array.prototype.forEach.call(trees, function(tree) {
+		tree.hidden = (tree.id !== select.value);
+	});
+};
+
+var quickNav = function() {
 	var dialog = createDialog();
-	buildTree(selector, dialog);
+
+	var select = document.createElement('select');
+	select.innerHTML =
+		'<option value="landmark">Landmarks</option>' +
+		'<option value="heading">Headings</option>' +
+		'<option value="link">Links</option>';
+	select.addEventListener('change', function(event) {
+		updateVisiblePane(select, dialog);
+	});
+	dialog.appendChild(select);
+
+	buildTree('landmark', dialog);
+	buildTree('heading', dialog);
+	buildTree('link', dialog);
+
+	updateVisiblePane(select, dialog);
 	dialog.showModal();
 };
 
 document.addEventListener('keyup', function(event) {
-	if (event.ctrlKey && !event.altKey) {
-		if (event.key == 'm') {
+	if (event.shiftKey && !event.ctrlKey && !event.altKey) {
+		if (event.key === 'F7') {
 			event.preventDefault();
-			quickNav('landmark');
-		} else if (event.key == ',') {
-			event.preventDefault();
-			quickNav('heading');
-		} else if (event.key == '.') {
-			event.preventDefault();
-			quickNav('link');
+			quickNav();
 		}
 	}
 });
