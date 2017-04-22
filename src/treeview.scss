@@ -26,11 +26,13 @@
 
 	button {
 		position: absolute;
-		left: -1.7em;
+		left: -1.5em;
 		border: 1px dotted;
 		background: white;
 		padding: 0;
-		min-width: 1.2em;
+		min-width: 1em;
+		line-height: 1;
+		text-align: center;
 
 		&::after {
 			content: "+";
