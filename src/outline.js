@@ -39,13 +39,15 @@ var quickNav = function(selector, needsFocus) {
 			}
 			el.focus();
 		});
-		a.textContent = aria.getRole(el);
 
 		var name = aria.getName(el, null, true);
-		var description = aria.getDescription(el);
 		if (name) {
-			a.textContent += ' (' + name + ')';
+			a.textContent = name + ' ';
 		}
+
+		a.textContent += aria.getRole(el);
+
+		var description = aria.getDescription(el);
 		if (description && description != name) {
 			a.title = description;
 		}
