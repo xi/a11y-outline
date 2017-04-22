@@ -1,7 +1,7 @@
 var aria = require('aria-api');
 var treeview = require('./treeview');
 
-var createDialog = function(selector) {
+var createDialog = function() {
 	var dialog = document.createElement('dialog');
 	dialog.addEventListener('close', function() {
 		dialog.remove();
