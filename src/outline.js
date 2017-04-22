@@ -1,4 +1,5 @@
 var aria = require('aria-api');
+var treeview = require('./treeview');
 
 var createDialog = function(selector) {
 	var dialog = document.createElement('dialog');
@@ -71,4 +72,11 @@ document.addEventListener('keyup', function(event) {
 			quickNav('link', false);
 		}
 	}
+});
+
+setTimeout(function() {
+	var style = document.createElement('link');
+	style.rel = 'stylesheet';
+	style.href = chrome.extension.getURL('treeview.css');
+	document.querySelector('head').append(style);
 });
