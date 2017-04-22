@@ -86,6 +86,10 @@ var buildTree = function(role, dialog) {
 };
 
 var updateVisiblePane = function(select, dialog) {
+	if (dialog.querySelector('#' + select.value)) {
+		buildTree(select.value, dialog);
+	}
+
 	var trees = aria.querySelectorAll(dialog, 'tree');
 	Array.prototype.forEach.call(trees, function(tree) {
 		tree.hidden = (tree.id !== select.value);
@@ -110,10 +114,6 @@ var quickNav = function() {
 	style.href = chrome.extension.getURL('outline.css');
 	document.querySelector('head').append(style);
 	dialog.appendChild(style);
-
-	buildTree('landmark', dialog);
-	buildTree('heading', dialog);
-	buildTree('link', dialog);
 
 	updateVisiblePane(select, dialog);
 	dialog.showModal();
