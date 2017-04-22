@@ -21,7 +21,9 @@ var createItem = function(el, i) {
 	return {
 		label: label,
 		description: aria.getDescription(el),
-		href: '#' + i
+		href: '#' + i,
+		children: [],
+		element: el
 	};
 };
 
@@ -33,13 +35,38 @@ var focus = function(el) {
 	}
 };
 
+var isDescendant = function(el, ancestor) {
+	if (!el) {
+		return false;
+	} else if (el === ancestor) {
+		return true;
+	} else {
+		return isDescendant(el.parentElement, ancestor);
+	}
+};
+
+var insertItem = function(item, list) {
+	var itemLevel = aria.getAttribute(item.element, 'level');
+	var last = list[list.length - 1];
+	if (last) {
+		if (itemLevel > aria.getAttribute(last.element, 'level') ||
+				isDescendant(item.element, last.element)) {
+			return insertItem(item, last.children);
+		}
+	}
+	list.push(item);
+};
+
 var buildTree = function(role, dialog) {
 	var matches = aria.querySelectorAll(document, role)
 		.filter(function(el) {
 			return !aria.matches(el, ':hidden');
 		});
 
-	var items = Array.prototype.map.call(matches, createItem);
+	var items = [];
+	for (var i = 0; i < matches.length; i++) {
+		insertItem(createItem(matches[i], i), items);
+	}
 	var tree = treeview(items, role);
 
 	tree.addEventListener('click', function(event) {
