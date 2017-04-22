@@ -105,6 +105,12 @@ var quickNav = function() {
 	});
 	dialog.appendChild(select);
 
+	var style = document.createElement('link');
+	style.rel = 'stylesheet';
+	style.href = chrome.extension.getURL('outline.css');
+	document.querySelector('head').append(style);
+	dialog.appendChild(style);
+
 	buildTree('landmark', dialog);
 	buildTree('heading', dialog);
 	buildTree('link', dialog);
@@ -120,11 +126,4 @@ document.addEventListener('keyup', function(event) {
 			quickNav();
 		}
 	}
-});
-
-setTimeout(function() {
-	var style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.href = chrome.extension.getURL('outline.css');
-	document.querySelector('head').append(style);
 });
