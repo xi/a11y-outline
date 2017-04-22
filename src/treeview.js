@@ -164,7 +164,7 @@ var buildGroup = function(data, id) {
 };
 
 var buildTree = function(data, id) {
-	var tree = buildList(data, id, 0);
+	var tree = buildList(data, id);
 	tree.setAttribute('role', 'tree');
 	tree.tabIndex = 0;
 	tree.id = id;
