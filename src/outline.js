@@ -124,6 +124,6 @@ document.addEventListener('keyup', function(event) {
 setTimeout(function() {
 	var style = document.createElement('link');
 	style.rel = 'stylesheet';
-	style.href = chrome.extension.getURL('treeview.css');
+	style.href = chrome.extension.getURL('outline.css');
 	document.querySelector('head').append(style);
 });
