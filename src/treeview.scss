@@ -1,0 +1,43 @@
+.treeview {
+	outline: 0;
+
+	[aria-expanded="false"] ul {
+		display: none;
+	}
+
+	// link
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	[aria-selected="true"] > a {
+		outline: 1px dotted;
+	}
+
+	&:focus [aria-selected="true"] > a {
+		color: blue;
+	}
+
+	// toggle
+	[role="treeitem"] {
+		position: relative;
+	}
+
+	button {
+		position: absolute;
+		left: -1.7em;
+		border: 1px dotted;
+		background: white;
+		padding: 0;
+		min-width: 1.2em;
+
+		&::after {
+			content: "+";
+		}
+	}
+
+	[aria-expanded="true"] > button::after {
+		content: "-";
+	}
+}
