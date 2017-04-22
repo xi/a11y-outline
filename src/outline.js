@@ -25,7 +25,15 @@ var createItem = function(el, i) {
 	};
 };
 
-var buildTree = function(role, dialog, needsFocus) {
+var focus = function(el) {
+	el.focus();
+	if (document.activeElement !== el) {
+		el.tabIndex = -1;
+		el.focus();
+	}
+};
+
+var buildTree = function(role, dialog) {
 	var matches = aria.querySelectorAll(document, role)
 		.filter(function(el) {
 			return !aria.matches(el, ':hidden');
@@ -43,19 +51,16 @@ var buildTree = function(role, dialog, needsFocus) {
 			var i = parseInt(href.substr(1), 10);
 			var el = matches[i];
 
-			if (needsFocus) {
-				el.tabIndex = -1;
-			}
-			el.focus();
+			focus(el);
 		}
 	});
 
 	dialog.appendChild(tree);
 };
 
-var quickNav = function(selector, needsFocus) {
+var quickNav = function(selector) {
 	var dialog = createDialog();
-	buildTree(selector, dialog, needsFocus);
+	buildTree(selector, dialog);
 	dialog.showModal();
 };
 
@@ -63,13 +68,13 @@ document.addEventListener('keyup', function(event) {
 	if (event.ctrlKey && !event.altKey) {
 		if (event.key == 'm') {
 			event.preventDefault();
-			quickNav('landmark', true);
+			quickNav('landmark');
 		} else if (event.key == ',') {
 			event.preventDefault();
-			quickNav('heading', true);
+			quickNav('heading');
 		} else if (event.key == '.') {
 			event.preventDefault();
-			quickNav('link', false);
+			quickNav('link');
 		}
 	}
 });
