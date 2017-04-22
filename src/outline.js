@@ -3,6 +3,7 @@ var treeview = require('./treeview');
 
 var createDialog = function() {
 	var dialog = document.createElement('dialog');
+	dialog.id = 'a11y-outline';
 	dialog.addEventListener('close', function() {
 		dialog.remove();
 	});

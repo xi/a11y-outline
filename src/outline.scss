@@ -1,45 +1,82 @@
-.treeview {
-	outline: 0;
+$color-bg: #fff;
+$color-fg: #111;
+$color-border: #ccc;
+$color-focus: #26c;
+$color-tint: #eee;
 
-	[aria-expanded="false"] ul {
-		display: none;
+%button-base {
+	font-size: inherit;
+	color: inherit;
+	padding: 0.5em;
+	background-color: $color-tint;
+	border: 1px solid $color-border;
+}
+
+#a11y-outline {
+	font-size: 0.9rem;
+	line-height: 1.4;
+	background: $color-bg;
+	color: $color-fg;
+	max-width: 40em;
+
+	select {
+		@extend %button-base;
+
+		width: 100%;
+		margin: 0 0 1em;
 	}
 
-	// link
-	a {
-		color: inherit;
-		text-decoration: none;
+	ul {
+		margin: 0;
+		padding-left: 1.5em;
 	}
 
-	[aria-selected="true"] > a {
-		outline: 1px dotted;
-	}
+	.treeview {
+		outline: 0;
 
-	&:focus [aria-selected="true"] > a {
-		color: blue;
-	}
-
-	// toggle
-	[role="treeitem"] {
-		position: relative;
-	}
-
-	button {
-		position: absolute;
-		left: -1.5em;
-		border: 1px dotted;
-		background: white;
-		padding: 0;
-		min-width: 1em;
-		line-height: 1;
-		text-align: center;
-
-		&::after {
-			content: "+";
+		[aria-expanded="false"] ul {
+			display: none;
 		}
-	}
 
-	[aria-expanded="true"] > button::after {
-		content: "-";
+		// link
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		[aria-selected="true"] > a {
+			outline: 1px dotted;
+		}
+
+		&:focus [aria-selected="true"] > a {
+			color: $color-focus;
+		}
+
+		// toggle
+		[role="treeitem"] {
+			position: relative;
+		}
+
+		button {
+			@extend %button-base;
+
+			// layout
+			position: absolute;
+			left: -1.3em;
+			top: 0.3em;
+			padding: 0;
+			min-width: 0.8em;
+			line-height: 0.8;
+
+			text-align: center;
+
+			&::after {
+				content: "+";
+			}
+		}
+
+		[aria-expanded="true"] > button::after {
+			content: "-";
+		}
 	}
 }
