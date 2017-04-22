@@ -3,7 +3,7 @@ var aria = require('aria-api');
 var createDialog = function(selector) {
 	var dialog = document.createElement('dialog');
 	dialog.addEventListener('close', function() {
-		dialog.parentNode.removeChild(dialog);
+		dialog.remove();
 	});
 	dialog.style = 'max-width: 90vw; max-height: 90vh; overflow: auto;';
 	document.body.appendChild(dialog);
