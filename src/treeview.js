@@ -20,6 +20,10 @@ var activate = function(item) {
 		var tree = searchUp(item, 'tree');
 		tree.setAttribute('aria-activedescendant', item.id);
 
+		if (item.scrollIntoViewIfNeeded) {
+			item.scrollIntoViewIfNeeded();
+		}
+
 		// selection follows focus
 		var old = tree.querySelector('[aria-selected="true"]');
 		if (old) {

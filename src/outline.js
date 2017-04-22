@@ -6,7 +6,6 @@ var createDialog = function() {
 	dialog.addEventListener('close', function() {
 		dialog.remove();
 	});
-	dialog.style = 'max-width: 90vw; max-height: 90vh; overflow: auto;';
 	document.body.appendChild(dialog);
 	return dialog;
 };
