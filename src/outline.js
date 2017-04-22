@@ -67,7 +67,7 @@ var buildTree = function(role, dialog) {
 	for (var i = 0; i < matches.length; i++) {
 		insertItem(createItem(matches[i], i), items);
 	}
-	var tree = treeview(items, role);
+	var tree = treeview(items, dialog.id + '-' + role);
 
 	tree.addEventListener('click', function(event) {
 		if (event.target.matches('a')) {
@@ -86,13 +86,14 @@ var buildTree = function(role, dialog) {
 };
 
 var updateVisiblePane = function(select, dialog) {
-	if (dialog.querySelector('#' + select.value)) {
+	var id = dialog.id + '-' + select.value;
+	if (!document.getElementById(id)) {
 		buildTree(select.value, dialog);
 	}
 
 	var trees = aria.querySelectorAll(dialog, 'tree');
 	Array.prototype.forEach.call(trees, function(tree) {
-		tree.hidden = (tree.id !== select.value);
+		tree.hidden = (tree.id !== id);
 	});
 };
 
