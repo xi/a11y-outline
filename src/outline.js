@@ -60,8 +60,6 @@ var quickNav = function(selector, needsFocus) {
 
 document.addEventListener('keyup', function(event) {
 	if (event.ctrlKey && !event.altKey) {
-		var matches, dialog, links;
-
 		if (event.key == 'm') {
 			event.preventDefault();
 			quickNav('landmark', true);
