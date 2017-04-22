@@ -140,7 +140,7 @@ var buildItem = function(data, id) {
 	item.appendChild(buildLink(data, id));
 
 	if (data.children && data.children.length) {
-		item.setAttribute('aria-expanded', false);
+		item.setAttribute('aria-expanded', true);
 		item.appendChild(buildToggle());
 		item.appendChild(buildGroup(data.children, id));
 	}
