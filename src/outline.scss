@@ -20,6 +20,16 @@ $color-tint: #eee;
 	color: $color-fg;
 	max-width: 40em;
 
+	// compat for browsers without dialog support
+	&._is-open {
+		display: block;
+		position: fixed;
+		top: 5vh;
+		max-height: 90vh;
+		box-sizing: border-box;
+		overflow: auto;
+	}
+
 	select {
 		@extend %button-base;
 

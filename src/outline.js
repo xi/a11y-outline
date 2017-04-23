@@ -8,6 +8,15 @@ var createDialog = function() {
 		dialog.remove();
 	});
 	document.body.appendChild(dialog);
+
+	// compat
+	if (!dialog.showModal) {
+		dialog.close = dialog.remove;
+		dialog.showModal = function() {
+			dialog.classList.add('_is-open');
+		}
+	}
+
 	return dialog;
 };
 
