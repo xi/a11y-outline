@@ -22,16 +22,12 @@
 
   "background": {
     "scripts": ["bg.js"],
-    "persistent": true
+    "persistent": false
   },
 
   "content_scripts": [{
     "matches": ["<all_urls>"],
-    "js": [
-      "outline.js"
-    ],
-    "run_at": "document_start",
-    "all_frames": true
+    "js": ["outline.js"]
   }],
 
   "permissions": [
