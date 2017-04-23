@@ -2,7 +2,7 @@ a11y-outline - chrome extension to navigate page outlines easily
 
 Many screen readers like JAWS or NVDA have shortcuts to bring up a list of
 landmarks, headings or links. This browser extension provides the same
-functionality without requireing a screen reader.
+functionality without requiring a screen reader.
 
 This is mainly useful for two audiences:
 
