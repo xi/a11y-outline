@@ -29,7 +29,6 @@ var createItem = function(el, i) {
 
 	return {
 		label: label,
-		description: aria.getDescription(el),
 		href: '#' + i,
 		children: [],
 		element: el
