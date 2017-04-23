@@ -112,7 +112,6 @@ var quickNav = function() {
 	var style = document.createElement('link');
 	style.rel = 'stylesheet';
 	style.href = chrome.extension.getURL('outline.css');
-	document.querySelector('head').append(style);
 	dialog.appendChild(style);
 
 	updateVisiblePane(select, dialog);
