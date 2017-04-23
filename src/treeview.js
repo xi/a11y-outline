@@ -41,7 +41,9 @@ var nextItem = function(item, direction) {
 		var hidden = tree.querySelectorAll('[aria-expanded="false"] [role="treeitem"]');
 
 		var i = indexOf(items, item);
-		var dir = direction === 'up' ? -1 : 1;
+		if (direction === 'start') i = -1;
+		if (direction === 'end') i = items.length;
+		var dir = direction === 'up' || direction === 'end' ? -1 : 1;
 		i += dir;
 		while (i >= 0 && i < items.length) {
 			if (indexOf(hidden, items[i]) === -1) {
@@ -60,6 +62,14 @@ var onKeyDown = function(event) {
 		var item = this.querySelector('[aria-selected="true"]');
 
 		switch (event.which) {
+			case 35:  // end
+				event.preventDefault();
+				nextItem(item, 'end');
+				break;
+			case 36:  // home
+				event.preventDefault();
+				nextItem(item, 'start');
+				break;
 			case 38:  // up
 				event.preventDefault();
 				nextItem(item, 'up');
