@@ -61,24 +61,24 @@ var onKeyDown = function(event) {
 	if (!(event.shiftKey || event.ctrlKey || event.altKey || event.metaKey)) {
 		var item = this.querySelector('[aria-selected="true"]');
 
-		switch (event.which) {
-			case 35:  // end
+		switch (event.key) {
+			case 'End':
 				event.preventDefault();
 				nextItem(item, 'end');
 				break;
-			case 36:  // home
+			case 'Home':
 				event.preventDefault();
 				nextItem(item, 'start');
 				break;
-			case 38:  // up
+			case 'ArrowUp':
 				event.preventDefault();
 				nextItem(item, 'up');
 				break;
-			case 40:  // down
+			case 'ArrowDown':
 				event.preventDefault();
 				nextItem(item, 'down');
 				break;
-			case 37:  // left
+			case 'ArrowLeft':
 				event.preventDefault();
 				if (item.getAttribute('aria-expanded') === 'true') {
 					toggleGroup(item);
@@ -86,7 +86,7 @@ var onKeyDown = function(event) {
 					nextItem(item, 'parent');
 				}
 				break;
-			case 39:  // right
+			case 'ArrowRight':
 				event.preventDefault();
 				if (item.getAttribute('aria-expanded') === 'true') {
 					nextItem(item, 'down');
@@ -94,7 +94,7 @@ var onKeyDown = function(event) {
 					toggleGroup(item);
 				}
 				break;
-			case 13:  // enter
+			case 'Enter':
 				var link = item.querySelector('a');
 				link.click();
 				break;
