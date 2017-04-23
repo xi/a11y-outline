@@ -5,6 +5,19 @@ var indexOf = function(list, item) {
 	return Array.prototype.indexOf.call(list, item);
 };
 
+var typeaheadString = '';
+var typeaheadTimeout = null;
+var typeahead = function(c) {
+	typeaheadString += c;
+
+	clearTimeout(typeaheadTimeout);
+	typeaheadTimeout = setTimeout(function() {
+		typeaheadString = '';
+	}, 400);
+
+	return typeaheadString;
+};
+
 var activate = function(item) {
 	if (item) {
 		var tree = item.closest('[role="tree"]');
@@ -28,7 +41,7 @@ var toggleGroup = function(item) {
 	item.setAttribute('aria-expanded', !expanded);
 };
 
-var nextItem = function(item, direction) {
+var nextItem = function(item, direction, query) {
 	var next;
 
 	if (direction === 'parent') {
@@ -44,11 +57,15 @@ var nextItem = function(item, direction) {
 		if (direction === 'start') i = -1;
 		if (direction === 'end') i = items.length;
 		var dir = direction === 'up' || direction === 'end' ? -1 : 1;
-		i += dir;
+		if (!query) {
+			i += dir;
+		}
 		while (i >= 0 && i < items.length) {
 			if (indexOf(hidden, items[i]) === -1) {
-				next = items[i];
-				break;
+				if (!query || query.test(items[i].textContent)) {
+					next = items[i];
+					break;
+				}
 			}
 			i += dir;
 		}
@@ -98,6 +115,12 @@ var onKeyDown = function(event) {
 				var link = item.querySelector('a');
 				link.click();
 				break;
+			default:
+				if (event.key.length === 1) {
+					var s = typeahead(event.key);
+					var r = new RegExp('^' + s, 'i');
+					nextItem(item, 'down', r);
+				}
 		}
 	}
 };
