@@ -84,12 +84,6 @@ var onKeyDown = function(event) {
 					toggleGroup(item);
 				}
 				break;
-			case 32:  // space
-				event.preventDefault();
-				if (item.hasAttribute('aria-expanded')) {
-					toggleGroup(item);
-				}
-				break;
 			case 13:  // enter
 				var link = item.querySelector('a');
 				link.click();
