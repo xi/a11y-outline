@@ -5,19 +5,9 @@ var indexOf = function(list, item) {
 	return Array.prototype.indexOf.call(list, item);
 };
 
-var searchUp = function(el, role) {
-	if (!el) {
-		return null;
-	} else if (el.getAttribute('role') === role) {
-		return el;
-	} else {
-		return searchUp(el.parentElement, role);
-	}
-};
-
 var activate = function(item) {
 	if (item) {
-		var tree = searchUp(item, 'tree');
+		var tree = item.closest('[role="tree"]');
 		tree.setAttribute('aria-activedescendant', item.id);
 
 		if (item.scrollIntoViewIfNeeded) {
@@ -46,7 +36,7 @@ var nextItem = function(item, direction) {
 			next = item.parentElement.parentElement;
 		}
 	} else {
-		var tree = searchUp(item, 'tree');
+		var tree = item.closest('[role="tree"]');
 		var items = tree.querySelectorAll('[role="treeitem"]');
 		var hidden = tree.querySelectorAll('[aria-expanded="false"] [role="treeitem"]');
 
@@ -176,7 +166,10 @@ var buildTree = function(data, id) {
 
 	tree.addEventListener('keydown', onKeyDown);
 	tree.addEventListener('click', function(event) {
-		var item = searchUp(event.target, 'treeitem');
+		var item = event.target;
+		if (!item.matches('[role="treeitem"]')) {
+			item = item.closest('[role="treeitem"]');
+		}
 		activate(item);
 		this.focus();
 	});
