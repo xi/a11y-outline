@@ -119,11 +119,8 @@ var quickNav = function() {
 	dialog.showModal();
 };
 
-document.addEventListener('keyup', function(event) {
-	if (event.shiftKey && !event.ctrlKey && !event.altKey) {
-		if (event.key === 'F7') {
-			event.preventDefault();
-			quickNav();
-		}
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	if (request === 'showA11yOutline' && sender) {
+		quickNav();
 	}
 });
