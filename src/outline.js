@@ -1,6 +1,14 @@
 var aria = require('aria-api');
 var treeview = require('./treeview');
 
+var focus = function(el) {
+	el.focus();
+	if (document.activeElement !== el) {
+		el.tabIndex = -1;
+		el.focus();
+	}
+};
+
 var createDialog = function() {
 	var dialog = document.createElement('dialog');
 	dialog.id = 'a11y-outline';
@@ -35,14 +43,6 @@ var createItem = function(el, i) {
 	};
 };
 
-var focus = function(el) {
-	el.focus();
-	if (document.activeElement !== el) {
-		el.tabIndex = -1;
-		el.focus();
-	}
-};
-
 var insertItem = function(item, list) {
 	var itemLevel = aria.getAttribute(item.element, 'level');
 	var last = list[list.length - 1];
@@ -55,7 +55,7 @@ var insertItem = function(item, list) {
 	list.push(item);
 };
 
-var buildTree = function(role, dialog) {
+var getOutline = function(role) {
 	var matches = aria.querySelectorAll(document, role)
 		.filter(function(el) {
 			return !aria.matches(el, ':hidden');
@@ -65,6 +65,11 @@ var buildTree = function(role, dialog) {
 	for (var i = 0; i < matches.length; i++) {
 		insertItem(createItem(matches[i], i), items);
 	}
+	return items;
+};
+
+var buildTree = function(role, dialog) {
+	var items = getOutline(role);
 	var tree = treeview(items, dialog.id + '-' + role);
 
 	tree.addEventListener('click', function(event) {
