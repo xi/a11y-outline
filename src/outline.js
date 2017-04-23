@@ -44,22 +44,12 @@ var focus = function(el) {
 	}
 };
 
-var isDescendant = function(el, ancestor) {
-	if (!el) {
-		return false;
-	} else if (el === ancestor) {
-		return true;
-	} else {
-		return isDescendant(el.parentElement, ancestor);
-	}
-};
-
 var insertItem = function(item, list) {
 	var itemLevel = aria.getAttribute(item.element, 'level');
 	var last = list[list.length - 1];
 	if (last) {
 		if (itemLevel > aria.getAttribute(last.element, 'level') ||
-				isDescendant(item.element, last.element)) {
+				last.element.contains(item.element)) {
 			return insertItem(item, last.children);
 		}
 	}
