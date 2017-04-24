@@ -55,7 +55,7 @@ var insertItem = function(item, list) {
 	list.push(item);
 };
 
-var getOutline = function(role) {
+var buildTree = function(role, dialog) {
 	var matches = aria.querySelectorAll(document, role)
 		.filter(function(el) {
 			return !aria.matches(el, ':hidden');
@@ -65,11 +65,6 @@ var getOutline = function(role) {
 	for (var i = 0; i < matches.length; i++) {
 		insertItem(createItem(matches[i], i), items);
 	}
-	return items;
-};
-
-var buildTree = function(role, dialog) {
-	var items = getOutline(role);
 	var tree = treeview(items, dialog.id + '-' + role);
 
 	tree.addEventListener('click', function(event) {
