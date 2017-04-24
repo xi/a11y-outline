@@ -1,3 +1,5 @@
+PATH := node_modules/.bin:$(PATH)
+
 all: outline.js outline.css
 
 outline.js: src/outline.js src/*.js node_modules
