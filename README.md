@@ -10,6 +10,14 @@ This is mainly useful for two audiences:
 	experience their content.
 -	Sighted users who like this kind of navigation.
 
+# Installation
+
+-	Download the code.
+-	Run `make`. This requires `npm`, `browserify`, and `node-sass`.
+-	In chrome, navigate to `chrome://extensions/`.
+-	Make sure that "Developer mode" is checked.
+-	Use "Load unpacked extension…"
+
 # Usage
 
 Pressing `Ctrl+7` brings up a dialog. You can use the up/down arrow keys to
