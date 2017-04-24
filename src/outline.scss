@@ -72,6 +72,10 @@ $color-tint: #eee;
 		button {
 			@extend %button-base;
 
+			// reset
+			height: auto;
+			min-height: 0;
+
 			// layout
 			position: absolute;
 			left: -1.3em;
