@@ -29,7 +29,7 @@ var createDialog = function() {
 };
 
 var createItem = function(el, i) {
-	var label = aria.getRole(el);
+	var label = aria.getAttribute(el, 'roledescription') || aria.getRole(el);
 	var name = aria.getName(el, null, true);
 	if (name) {
 		label = name + ' ' + label;
