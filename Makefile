@@ -10,3 +10,6 @@ outline.css: src/outline.scss
 
 node_modules:
 	npm install aria-api
+
+clean:
+	rm -f outline.js outline.css
