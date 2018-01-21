@@ -1,4 +1,5 @@
 var aria = require('aria-api');
+var dialogPolyfill = require('dialog-polyfill');
 var treeview = require('./treeview');
 
 var focus = function(el) {
@@ -17,12 +18,8 @@ var createDialog = function() {
 	});
 	document.body.appendChild(dialog);
 
-	// compat
 	if (!dialog.showModal) {
-		dialog.close = dialog.remove;
-		dialog.showModal = function() {
-			dialog.classList.add('_is-open');
-		}
+		dialogPolyfill.registerDialog(dialog);
 	}
 
 	return dialog;
