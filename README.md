@@ -17,6 +17,7 @@ This is mainly useful for two audiences:
 -	In chrome, navigate to `chrome://extensions/`.
 -	Make sure that "Developer mode" is checked.
 -	Use "Load unpacked extension…"
+-	You may need to add the keyboard shortcut manually.
 
 # Usage
 
