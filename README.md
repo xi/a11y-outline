@@ -1,4 +1,4 @@
-a11y-outline - chrome extension to navigate page outlines easily
+a11y-outline - web extension to navigate page outlines easily
 
 Many screen readers like JAWS or NVDA have shortcuts to bring up a list of
 landmarks, headings or links. This browser extension provides the same
