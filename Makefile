@@ -8,6 +8,9 @@ bundle.zip: manifest.json icon-128.png bg.js outline.js outline.css
 outline.js: src/outline.js src/*.js node_modules
 	browserify $< -o $@
 
+outline.min.js: outline.js
+	uglifyjs $< -o $@
+
 outline.css: src/outline.scss node_modules
 	node-sass $< $@
 
