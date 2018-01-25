@@ -2,6 +2,8 @@ var aria = require('aria-api');
 var dialogPolyfill = require('dialog-polyfill');
 var treeview = require('./treeview');
 
+var DIALOG_ID = 'a11y-outline';
+
 var focus = function(el) {
 	el.focus();
 	if (document.activeElement !== el) {
@@ -12,7 +14,7 @@ var focus = function(el) {
 
 var createDialog = function() {
 	var dialog = document.createElement('dialog');
-	dialog.id = 'a11y-outline';
+	dialog.id = DIALOG_ID;
 	dialog.addEventListener('close', function() {
 		dialog.remove();
 	});
@@ -119,6 +121,8 @@ var quickNav = function() {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request === 'showA11yOutline' && sender) {
-		quickNav();
+		if (!document.getElementById(DIALOG_ID)) {
+			quickNav();
+		}
 	}
 });
