@@ -1,5 +1,6 @@
 # 1.0.1 (2018-01-25)
 
+-   display heading level
 -   change default shortcut to `Ctrl+Shift+7` (#1)
 -   add bookmarklet (#2)
 -   avoid stacking multiple dialogs (#3)
