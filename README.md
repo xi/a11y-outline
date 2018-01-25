@@ -12,12 +12,19 @@ This is mainly useful for two audiences:
 
 # Installation
 
+## Firefox
+
+See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
+
+## Chrome
+
 -	Download the code.
 -	Run `make`. This requires `npm`, `browserify`, and `node-sass`.
 -	In chrome, navigate to `chrome://extensions/`.
 -	Make sure that "Developer mode" is checked.
 -	Use "Load unpacked extension…"
--	You may need to add the keyboard shortcut manually.
+-	You may need to add the keyboard shortcut manually (at the bottom of the
+	extensions page).
 
 # Usage
 
