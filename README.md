@@ -26,6 +26,10 @@ See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
 -	You may need to add the keyboard shortcut manually (at the bottom of the
 	extensions page).
 
+## Bookmarklet
+
+A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
+
 # Usage
 
 Pressing `Ctrl+7` brings up a dialog. You can use the up/down arrow keys to
