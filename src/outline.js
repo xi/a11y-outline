@@ -27,6 +27,9 @@ var createDialog = function() {
 
 var createItem = function(el, i) {
 	var label = aria.getAttribute(el, 'roledescription') || aria.getRole(el);
+	if (aria.matches(el, 'heading')) {
+		label += ' ' + aria.getAttribute(el, 'level');
+	}
 	var name = aria.getName(el, null, true);
 	if (name) {
 		label = name + ' ' + label;
