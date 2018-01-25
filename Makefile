@@ -5,6 +5,9 @@ all: outline.js outline.css
 bundle.zip: manifest.json icon-128.png bg.js outline.js outline.css
 	zip $@ $^
 
+index.html: index.tpl outline.min.js build.js
+	node build.js
+
 outline.js: src/outline.js src/*.js node_modules
 	browserify $< -o $@
 
