@@ -32,9 +32,9 @@ A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
 
 # Usage
 
-Pressing `Ctrl+7` brings up a dialog. You can use the up/down arrow keys to
-select a list. With the tab key you can switch to the actual list and navigate
-it with arrow keys.`
+Pressing `Ctrl+Shift+7` brings up a dialog. You can use the up/down arrow keys
+to select a list. With the tab key you can switch to the actual list and
+navigate it with arrow keys.`
 
 # Firefox support
 
