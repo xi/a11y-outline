@@ -30,3 +30,10 @@ it with arrow keys.`
 This extension generally works on firefox. But the missing support for
 `<dialog>` and `scrollIntoViewIfNeeded()` make keyboard navigation a rather
 unpleasent experience.
+
+# Note on HTML5 outline algorithm
+
+This extension *does not* implement the [HTML5 outline
+algorithm](https://www.w3.org/TR/html53/sections.html#creating-an-outline), as
+that is also not available in common screen readers and works very differently
+from the WAI-ARIA based outlines used here.
