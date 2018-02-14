@@ -1,3 +1,8 @@
+# 1.0.2 (2018-02-14)
+
+-   update aria-api to 0.2.2 (fixing many issues with name calculation)
+
+
 # 1.0.1 (2018-01-25)
 
 -   display heading level
