@@ -1,3 +1,8 @@
+# 1.0.3 (2018-03-01)
+
+-   update aria-api to 0.2.4
+
+
 # 1.0.2 (2018-02-14)
 
 -   update aria-api to 0.2.2 (fixing many issues with name calculation)
