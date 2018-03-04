@@ -20,8 +20,8 @@ See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
 
 ## Chrome
 
--	Download the code.
--	Run `make`. This requires `npm`, `browserify`, and `node-sass`.
+-	Download the [latest release](https://github.com/xi/a11y-outline/releases)
+	and unpack.
 -	In chrome, navigate to `chrome://extensions/`.
 -	Make sure that "Developer mode" is checked.
 -	Use "Load unpacked extension…"
@@ -31,6 +31,11 @@ See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
 ## Bookmarklet
 
 A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
+
+## Building manually
+
+Running `make` should be sufficient. This requires `npm`, `browserify`, and
+`node-sass`.
 
 # Usage
 
