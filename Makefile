@@ -12,7 +12,7 @@ outline.min.js: outline.js
 	uglifyjs $< -o $@
 
 outline.css: src/outline.scss node_modules
-	node-sass $< $@
+	sassc $< $@
 
 node_modules:
 	npm install aria-api dialog-polyfill
