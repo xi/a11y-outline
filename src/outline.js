@@ -91,7 +91,7 @@ var updateVisiblePane = function(select, dialog) {
 		buildTree(select.value, dialog);
 	}
 
-	var trees = aria.querySelectorAll(dialog, 'tree');
+	var trees = dialog.querySelectorAll('[role="tree"]');
 	Array.prototype.forEach.call(trees, function(tree) {
 		tree.hidden = (tree.id !== id);
 	});
