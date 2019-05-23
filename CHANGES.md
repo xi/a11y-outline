@@ -1,3 +1,8 @@
+# 1.0.4 (2018-05-23)
+
+-   update aria-api to 0.3.0
+
+
 # 1.0.3 (2018-03-01)
 
 -   update aria-api to 0.2.4
