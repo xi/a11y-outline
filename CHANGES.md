@@ -1,3 +1,9 @@
+# 1.1.0 (2020-09-10)
+
+-   update aria-api to 0.4.0
+-   add shortcuts for main, next landmark, previous landmark
+
+
 # 1.0.4 (2018-05-23)
 
 -   update aria-api to 0.3.0
