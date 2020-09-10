@@ -28,20 +28,19 @@ See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
 -	You may need to add the keyboard shortcut manually (at the bottom of the
 	extensions page).
 
-## Bookmarklet
-
-A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
-
 ## Building manually
 
 Running `make` should be sufficient. This requires `npm`, `browserify`, and
-`node-sass`.
+`sassc`.
 
 # Usage
 
 Pressing `Ctrl+Shift+7` brings up a dialog. You can use the up/down arrow keys
 to select a list. With the tab key you can switch to the actual list and
 navigate it with arrow keys.`
+
+Optionally you can create shortcuts for some additional commands in your
+browser settings.
 
 # Firefox support
 
