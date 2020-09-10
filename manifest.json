@@ -18,6 +18,15 @@
       "suggested_key": {
         "default": "Ctrl+Shift+7"
       }
+    },
+    "cycle-main": {
+      "description": "go to main landmark"
+    },
+    "next-landmark": {
+      "description": "go to next landmark"
+    },
+    "prev-landmark": {
+      "description": "go to previous landmark"
     }
   },
 

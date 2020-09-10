@@ -119,10 +119,69 @@ var quickNav = function() {
 	dialog.showModal();
 };
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	if (request === 'showA11yOutline' && sender) {
-		if (!document.getElementById(DIALOG_ID)) {
-			quickNav();
+var _walk = function(root, fn) {
+	fn(root);
+	aria.getChildNodes(root).forEach(function(child) {
+		_walk(child, fn);
+	});
+};
+
+var walk = function(root, fn) {
+	try {
+		_walk(document, function(node) {
+			if (node.nodeType === node.ELEMENT_NODE) {
+				fn(node);
+			}
+		});
+	} catch (e) {
+		if (e !== 'StopIteration') {
+			throw e;
 		}
+	}
+};
+
+var focusNext = function(selector) {
+	var target;
+	var next = false;
+	walk(document, function(node) {
+		if (node === document.activeElement) {
+			next = true;
+		} else if ((!target || next) && aria.matches(node, selector)) {
+			target = node;
+			if (next) {
+				throw 'StopIteration';
+			}
+		}
+	});
+	if (target) {
+		focus(target);
+	}
+}
+
+var focusPrev = function(selector) {
+	var target;
+	walk(document, function(node) {
+		if (node === document.activeElement) {
+			throw 'StopIteration';
+		} else if (aria.matches(node, selector)) {
+			target = node;
+		}
+	});
+	if (target) {
+		focus(target);
+	}
+}
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	if (document.getElementById(DIALOG_ID)) {
+		return;
+	} else if (request === 'showA11yOutline') {
+		quickNav();
+	} else if (request === 'cycle-main') {
+		focusNext('main');
+	} else if (request === 'next-landmark') {
+		focusNext('landmark');
+	} else if (request === 'prev-landmark') {
+		focusPrev('landmark');
 	}
 });
