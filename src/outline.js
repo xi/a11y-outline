@@ -10,6 +10,12 @@ var focus = function(el) {
 		el.tabIndex = -1;
 		el.focus();
 	}
+
+	var y = el.getBoundingClientRect().top;
+	var h = document.documentElement.clientHeight;
+	if (y > h / 2) {
+		document.scrollingElement.scrollBy(0, y - h / 2);
+	}
 };
 
 var createDialog = function() {
