@@ -1,3 +1,9 @@
+# 1.1.1 (2021-06-03)
+
+-   improve scroll into view behavior
+-   fix icon transparency
+
+
 # 1.1.0 (2020-09-10)
 
 -   update aria-api to 0.4.0
