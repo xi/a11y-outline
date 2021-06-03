@@ -23,9 +23,7 @@ var activate = function(item) {
 		var tree = item.closest('[role="tree"]');
 		tree.setAttribute('aria-activedescendant', item.id);
 
-		if (item.scrollIntoViewIfNeeded) {
-			item.scrollIntoViewIfNeeded();
-		}
+		item.scrollIntoView({block: 'nearest'});
 
 		// selection follows focus
 		var old = tree.querySelector('[aria-selected="true"]');
