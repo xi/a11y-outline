@@ -42,12 +42,6 @@ navigate it with arrow keys.`
 Optionally you can create shortcuts for some additional commands in your
 browser settings.
 
-# Firefox support
-
-This extension generally works on firefox. But the missing support for
-`<dialog>` and `scrollIntoViewIfNeeded()` make keyboard navigation a rather
-unpleasent experience.
-
 # Note on HTML5 outline algorithm
 
 This extension *does not* implement the [HTML5 outline
