@@ -38,7 +38,7 @@ dialog.fixed {
   top: 50%;
   transform: translate(0, -50%); }
 
-#a11y-outline select, #a11y-outline .treeview button {
+#a11y-outline .treeview button, #a11y-outline select {
   font-size: inherit;
   color: inherit;
   padding: 0.5em;
