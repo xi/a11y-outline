@@ -28,6 +28,10 @@ See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
 -	You may need to add the keyboard shortcut manually (at the bottom of the
 	extensions page).
 
+## Bookmarklet
+
+A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
+
 ## Building manually
 
 Running `make` should be sufficient. This requires `npm`, `browserify`, and
