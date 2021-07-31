@@ -63,19 +63,26 @@ var insertItem = function(item, list) {
 	list.push(item);
 };
 
-var buildTree = function(role, dialog) {
-	var matches = aria.querySelectorAll(document, role)
-		.filter(function(el) {
-			return !aria.matches(el, ':hidden');
-		});
+var getMatches = function(role) {
+	return aria.querySelectorAll(document, role)
+		.filter(el => !aria.matches(el, ':hidden'));
+};
 
+var buildTree = function(matches) {
 	var items = [];
 	for (var i = 0; i < matches.length; i++) {
 		insertItem(createItem(matches[i], i), items);
 	}
-	var tree = treeview(items, dialog.id + '-' + role);
+	return items;
+};
 
-	tree.addEventListener('click', function(event) {
+var renderTree = function(role, dialog) {
+	var matches = getMatches(role);
+	var tree = buildTree(matches);
+
+	var ul = treeview(tree, dialog.id + '-' + role);
+
+	ul.addEventListener('click', function(event) {
 		if (event.target.matches('a')) {
 			event.preventDefault();
 			dialog.close();
@@ -88,13 +95,13 @@ var buildTree = function(role, dialog) {
 		}
 	});
 
-	dialog.appendChild(tree);
+	dialog.appendChild(ul);
 };
 
 var updateVisiblePane = function(select, dialog) {
 	var id = dialog.id + '-' + select.value;
 	if (!document.getElementById(id)) {
-		buildTree(select.value, dialog);
+		renderTree(select.value, dialog);
 	}
 
 	var trees = dialog.querySelectorAll('[role="tree"]');
