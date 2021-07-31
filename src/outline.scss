@@ -73,6 +73,7 @@ $color-tint: #eee;
 
 		button {
 			@extend %button-base;
+			box-sizing: content-box;
 
 			// reset
 			height: auto;
@@ -94,7 +95,7 @@ $color-tint: #eee;
 		}
 
 		[aria-expanded="true"] > button::after {
-			content: "-";
+			content: "−";
 		}
 	}
 }
