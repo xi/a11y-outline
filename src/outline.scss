@@ -16,6 +16,14 @@ $color-tint: #eee;
 }
 
 #a11y-outline {
+	[hidden] {
+		display: none !important;
+	}
+
+	* {
+		all: revert;
+	}
+
 	font-size: 0.9em;
 	line-height: 1.4;
 	background: $color-bg;
