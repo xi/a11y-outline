@@ -1,3 +1,4 @@
+@charset "UTF-8";
 dialog {
   position: absolute;
   left: 0;
@@ -51,7 +52,12 @@ dialog.fixed {
   line-height: 1.4;
   background: #fff;
   color: #111;
-  max-width: 40em; }
+  max-width: 40em;
+  text-align: start; }
+  #a11y-outline [hidden] {
+    display: none !important; }
+  #a11y-outline * {
+    all: revert; }
   #a11y-outline._is-open {
     display: block;
     position: fixed;
@@ -80,6 +86,7 @@ dialog.fixed {
     #a11y-outline .treeview [role="treeitem"] {
       position: relative; }
     #a11y-outline .treeview button {
+      box-sizing: content-box;
       height: auto;
       min-height: 0;
       position: absolute;
@@ -92,4 +99,4 @@ dialog.fixed {
       #a11y-outline .treeview button::after {
         content: "+"; }
     #a11y-outline .treeview [aria-expanded="true"] > button::after {
-      content: "-"; }
+      content: "−"; }
