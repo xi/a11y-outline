@@ -29,6 +29,7 @@ $color-tint: #eee;
 	background: $color-bg;
 	color: $color-fg;
 	max-width: 40em;
+	text-align: start;
 
 	// compat for browsers without dialog support
 	&._is-open {
