@@ -1,3 +1,9 @@
+# 1.2.0 (2021-08-20)
+
+-   improve treeview
+-   isolate treeview styles from current page styles
+
+
 # 1.1.1 (2021-06-03)
 
 -   improve scroll into view behavior

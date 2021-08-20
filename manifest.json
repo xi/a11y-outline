@@ -3,7 +3,7 @@
 
   "name": "a11y-outline",
   "description": "navigate page outlines easily",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "icons": {
     "128": "icon-128.png"
   },
