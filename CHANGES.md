@@ -1,6 +1,6 @@
 # 1.2.0 (2021-08-20)
 
--   improve treeview
+-   improve treeview styles
 -   isolate treeview styles from current page styles
 
 
