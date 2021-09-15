@@ -5,6 +5,9 @@ all: outline.js outline.css
 bundle.zip: manifest.json icon-128.png bg.js outline.js outline.css
 	zip $@ $^
 
+icon-128.png: icon.svg
+	inkscape $< --export-filename=$@
+
 outline.js: src/outline.js src/*.js node_modules
 	browserify $< -o $@
 
