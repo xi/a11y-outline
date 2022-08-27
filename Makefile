@@ -9,10 +9,10 @@ icon-128.png: icon.svg
 	inkscape $< --export-filename=$@
 
 outline.js: src/outline.js src/*.js node_modules
-	browserify $< -o $@
+	npx browserify $< -o $@
 
 outline.css: src/outline.scss node_modules
-	sassc $< $@
+	npx sass $< $@
 
 node_modules:
 	npm install aria-api@0.4.0 dialog-polyfill
