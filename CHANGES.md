@@ -1,3 +1,10 @@
+# 1.2.1 (2022-08-27)
+
+-   update aria-api to 0.4.2
+-   fix `chrome.extension.getURL()` deprecation warning
+-   friendlier dialog styling
+
+
 # 1.2.0 (2021-08-20)
 
 -   improve treeview styles
