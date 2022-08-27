@@ -30,6 +30,9 @@ $color-tint: #eee;
 	color: $color-fg;
 	max-width: 40em;
 	text-align: start;
+	border: 1px solid $color-border;
+	border-radius: 0.3em;
+	box-shadow: 0 0 0.5em rgba(0,0,0,0.3);
 
 	// compat for browsers without dialog support
 	&._is-open {
