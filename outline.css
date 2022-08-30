@@ -14,10 +14,12 @@ dialog {
   padding: 1em;
   background: white;
   color: black;
-  display: block; }
+  display: block;
+}
 
 dialog:not([open]) {
-  display: none; }
+  display: none;
+}
 
 dialog + .backdrop {
   position: fixed;
@@ -25,19 +27,22 @@ dialog + .backdrop {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.1); }
+  background: rgba(0, 0, 0, 0.1);
+}
 
 ._dialog_overlay {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0; }
+  left: 0;
+}
 
 dialog.fixed {
   position: fixed;
   top: 50%;
-  transform: translate(0, -50%); }
+  transform: translate(0, -50%);
+}
 
 #a11y-outline .treeview button, #a11y-outline select {
   font-size: inherit;
@@ -45,7 +50,8 @@ dialog.fixed {
   padding: 0.5em;
   background-color: #eee;
   border: 1px solid #ccc;
-  border-radius: 0; }
+  border-radius: 0;
+}
 
 #a11y-outline {
   font-size: 0.9em;
@@ -53,50 +59,70 @@ dialog.fixed {
   background: #fff;
   color: #111;
   max-width: 40em;
-  text-align: start; }
-  #a11y-outline [hidden] {
-    display: none !important; }
-  #a11y-outline * {
-    all: revert; }
-  #a11y-outline._is-open {
-    display: block;
-    position: fixed;
-    top: 5vh;
-    max-height: 90vh;
-    box-sizing: border-box;
-    overflow: auto; }
-  #a11y-outline select {
-    width: 100%;
-    margin: 0 0 1em; }
-  #a11y-outline ul {
-    margin: 0;
-    padding-left: 1.5em;
-    list-style: initial; }
-  #a11y-outline .treeview {
-    outline: 0; }
-    #a11y-outline .treeview [aria-expanded="false"] ul {
-      display: none; }
-    #a11y-outline .treeview a {
-      color: inherit;
-      text-decoration: none; }
-    #a11y-outline .treeview [aria-selected="true"] > a {
-      outline: 1px dotted; }
-    #a11y-outline .treeview:focus [aria-selected="true"] > a {
-      color: #26c; }
-    #a11y-outline .treeview [role="treeitem"] {
-      position: relative; }
-    #a11y-outline .treeview button {
-      box-sizing: content-box;
-      height: auto;
-      min-height: 0;
-      position: absolute;
-      left: -1.3em;
-      top: 0.3em;
-      padding: 0;
-      min-width: 0.8em;
-      line-height: 0.8;
-      text-align: center; }
-      #a11y-outline .treeview button::after {
-        content: "+"; }
-    #a11y-outline .treeview [aria-expanded="true"] > button::after {
-      content: "−"; }
+  text-align: start;
+  border: 1px solid #ccc;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.3);
+}
+#a11y-outline [hidden] {
+  display: none !important;
+}
+#a11y-outline * {
+  all: revert;
+}
+#a11y-outline._is-open {
+  display: block;
+  position: fixed;
+  top: 5vh;
+  max-height: 90vh;
+  box-sizing: border-box;
+  overflow: auto;
+}
+#a11y-outline select {
+  width: 100%;
+  margin: 0 0 1em;
+}
+#a11y-outline ul {
+  margin: 0;
+  padding-left: 1.5em;
+  list-style: initial;
+}
+#a11y-outline .treeview {
+  outline: 0;
+}
+#a11y-outline .treeview [aria-expanded=false] ul {
+  display: none;
+}
+#a11y-outline .treeview a {
+  color: inherit;
+  text-decoration: none;
+}
+#a11y-outline .treeview [aria-selected=true] > a {
+  outline: 1px dotted;
+}
+#a11y-outline .treeview:focus [aria-selected=true] > a {
+  color: #26c;
+}
+#a11y-outline .treeview [role=treeitem] {
+  position: relative;
+}
+#a11y-outline .treeview button {
+  box-sizing: content-box;
+  height: auto;
+  min-height: 0;
+  position: absolute;
+  left: -1.3em;
+  top: 0.3em;
+  padding: 0;
+  min-width: 0.8em;
+  line-height: 0.8;
+  text-align: center;
+}
+#a11y-outline .treeview button::after {
+  content: "+";
+}
+#a11y-outline .treeview [aria-expanded=true] > button::after {
+  content: "−";
+}
+
+/*# sourceMappingURL=outline.css.map */
