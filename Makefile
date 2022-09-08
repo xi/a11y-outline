@@ -15,7 +15,7 @@ outline.css: src/outline.scss node_modules
 	npx sass $< $@
 
 node_modules:
-	npm install aria-api@0.4.2 dialog-polyfill
+	npm install aria-api@0.4.2 dialog-polyfill@0.5.6
 
 clean:
 	rm -f outline.js outline.css
