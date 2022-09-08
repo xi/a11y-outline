@@ -1,3 +1,9 @@
+# 1.2.2 (2022-09-09)
+
+-   Avoid preprocessing code so it is not necessary to submut source code
+    separately to mozilla
+
+
 # 1.2.1 (2022-08-27)
 
 -   update aria-api to 0.4.2
