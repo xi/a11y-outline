@@ -34,8 +34,7 @@ A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
 
 ## Building manually
 
-Running `make` should be sufficient. This requires `npm`, `browserify`, and
-`sassc`.
+Running `make` should be sufficient. This requires `npx`.
 
 # Usage
 
