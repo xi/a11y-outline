@@ -205,4 +205,4 @@ var buildTree = function(data, id) {
 	return tree;
 };
 
-module.exports = buildTree;
+window.treeview = buildTree;

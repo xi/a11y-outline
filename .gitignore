@@ -1,5 +1,5 @@
 node_modules
-/outline.js
+vendor
 /outline.css
 /icon-128.png
 *.zip

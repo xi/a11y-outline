@@ -1,7 +1,3 @@
-var aria = require('aria-api');
-var dialogPolyfill = require('dialog-polyfill');
-var treeview = require('./treeview');
-
 var DIALOG_ID = 'a11y-outline';
 
 var focus = function(el) {
