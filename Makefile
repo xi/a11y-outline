@@ -4,6 +4,7 @@ bundle.zip: manifest.json icon-128.png bg.js outline.js treeview.js outline.css
 	mkdir -p vendor
 	cp node_modules/aria-api/dist/aria.js vendor/
 	cp node_modules/dialog-polyfill/dist/dialog-polyfill.js vendor/
+	cp node_modules/dialog-polyfill/dialog-polyfill.css vendor/
 	rm -f $@
 	zip -r $@ $^ vendor
 

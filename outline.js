@@ -124,6 +124,11 @@ var quickNav = function() {
 	style.href = chrome.runtime.getURL('outline.css');
 	dialog.appendChild(style);
 
+	style = document.createElement('link');
+	style.rel = 'stylesheet';
+	style.href = chrome.runtime.getURL('vendor/dialog-polyfill.css');
+	dialog.appendChild(style);
+
 	updateVisiblePane(select, dialog);
 	dialog.showModal();
 };
