@@ -1,8 +1,7 @@
 PATH := node_modules/.bin:$(PATH)
 
-all: outline.js outline.css
-
 bundle.zip: manifest.json icon-128.png bg.js outline.js outline.css
+	rm -f $@
 	zip $@ $^
 
 icon-128.png: icon.svg
