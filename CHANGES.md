@@ -1,3 +1,9 @@
+# 1.3.0 (2022-09-23)
+
+-   No longer include dialog-polyfill because all modern browsers now have
+    native support
+
+
 # 1.2.2 (2022-09-09)
 
 -   Avoid preprocessing code so it is not necessary to submut source code
