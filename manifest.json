@@ -38,7 +38,6 @@
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": [
-      "vendor/dialog-polyfill.js",
       "vendor/aria.js",
       "treeview.js",
       "outline.js"
@@ -50,7 +49,6 @@
   ],
 
   "web_accessible_resources": [
-    "vendor/dialog-polyfill.css",
     "outline.css"
   ]
 }

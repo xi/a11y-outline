@@ -32,16 +32,6 @@ $color-tint: #eee;
 	border-radius: 0.3em;
 	box-shadow: 0 0 0.5em rgba(0,0,0,0.3);
 
-	// compat for browsers without dialog support
-	&._is-open {
-		display: block;
-		position: fixed;
-		top: 5vh;
-		max-height: 90vh;
-		box-sizing: border-box;
-		overflow: auto;
-	}
-
 	select {
 		@extend %button-base;
 

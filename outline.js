@@ -21,11 +21,6 @@ var createDialog = function() {
 		dialog.remove();
 	});
 	document.body.appendChild(dialog);
-
-	if (!dialog.showModal) {
-		dialogPolyfill.registerDialog(dialog);
-	}
-
 	return dialog;
 };
 
@@ -122,11 +117,6 @@ var quickNav = function() {
 	var style = document.createElement('link');
 	style.rel = 'stylesheet';
 	style.href = chrome.runtime.getURL('outline.css');
-	dialog.appendChild(style);
-
-	style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.href = chrome.runtime.getURL('vendor/dialog-polyfill.css');
 	dialog.appendChild(style);
 
 	updateVisiblePane(select, dialog);
