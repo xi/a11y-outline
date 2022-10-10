@@ -1,3 +1,9 @@
+# 1.4.0 (2022-10-10)
+
+-   update aria-api to 0.4.5
+-   add an explicit close button
+
+
 # 1.3.0 (2022-09-23)
 
 -   No longer include dialog-polyfill because all modern browsers now have
