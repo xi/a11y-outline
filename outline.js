@@ -104,6 +104,9 @@ var updateVisiblePane = function(select, dialog) {
 var quickNav = function() {
 	var dialog = createDialog();
 
+	var header = document.createElement('header');
+	dialog.appendChild(header);
+
 	var select = document.createElement('select');
 	select.innerHTML =
 		'<option value="landmark">Landmarks</option>' +
@@ -112,7 +115,17 @@ var quickNav = function() {
 	select.addEventListener('change', function(event) {
 		updateVisiblePane(select, dialog);
 	});
-	dialog.appendChild(select);
+	select.autofocus = true;
+	header.appendChild(select);
+
+	var close = document.createElement('button');
+	close.addEventListener('click', () => dialog.close());
+	close.textContent = '✕';
+	close.title = 'Close';
+	close.setAttribute('aria-label', 'Close');
+	close.className = 'close';
+	close.tabIndex = -1;
+	header.appendChild(close);
 
 	var style = document.createElement('link');
 	style.rel = 'stylesheet';

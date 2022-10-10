@@ -6,6 +6,7 @@ $color-tint: #eee;
 
 %button-base {
 	font-size: inherit;
+	line-height: 1.2;
 	color: inherit;
 	padding: 0.5em;
 	background-color: $color-tint;
@@ -32,11 +33,22 @@ $color-tint: #eee;
 	border-radius: 0.3em;
 	box-shadow: 0 0 0.5em rgba(0,0,0,0.3);
 
+	header {
+		display: flex;
+		gap: 0.5em;
+		margin: 0 0 1em;
+	}
+
+	.close {
+		@extend %button-base;
+		box-sizing: content-box;
+		min-width: 1.2em;
+		text-align: center;
+	}
+
 	select {
 		@extend %button-base;
-
-		width: 100%;
-		margin: 0 0 1em;
+		flex-grow: 1;
 	}
 
 	ul {
