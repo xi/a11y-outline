@@ -18,7 +18,7 @@ var typeahead = function(c) {
 	return typeaheadString;
 };
 
-var activate = function(item) {
+var select = function(item) {
 	if (item) {
 		var tree = item.closest('[role="tree"]');
 		tree.setAttribute('aria-activedescendant', item.id);
@@ -69,7 +69,7 @@ var nextItem = function(item, direction, query) {
 		}
 	}
 
-	activate(next);
+	select(next);
 };
 
 var onKeyDown = function(event) {
@@ -195,12 +195,12 @@ var buildTree = function(data, id) {
 		if (!item.matches('[role="treeitem"]')) {
 			item = item.closest('[role="treeitem"]');
 		}
-		activate(item);
+		select(item);
 		this.focus();
 	});
 
 	var first = tree.querySelector('[role="treeitem"]');
-	activate(first);
+	select(first);
 
 	return tree;
 };
