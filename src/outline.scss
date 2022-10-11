@@ -15,6 +15,14 @@
 	--color-focus: #26c;
 	--color-tint: #eee;
 
+	@media (prefers-color-scheme: dark) {
+		--color-bg: #111;
+		--color-fg: #fff;
+		--color-border: #222;
+		--color-focus: #3ae;
+		--color-tint: #444;
+	}
+
 	[hidden] {
 		display: none !important;
 	}
