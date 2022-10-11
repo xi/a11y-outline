@@ -1,3 +1,11 @@
+# 1.5.0 (2022-10-11)
+
+-   highlight target on focus/hover
+-   add shortcuts to navigate headings
+-   add dark mode
+-   use initial font-size in popup
+
+
 # 1.4.0 (2022-10-10)
 
 -   update aria-api to 0.4.5
