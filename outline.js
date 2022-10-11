@@ -1,3 +1,5 @@
+/* global chrome, aria, treeview */
+
 var DIALOG_ID = 'a11y-outline';
 
 var focus = function(el) {
@@ -38,7 +40,7 @@ var createItem = function(el, i) {
 		label: label,
 		href: '#' + i,
 		children: [],
-		element: el
+		element: el,
 	};
 };
 
@@ -112,7 +114,7 @@ var quickNav = function() {
 		'<option value="landmark">Landmarks</option>' +
 		'<option value="heading">Headings</option>' +
 		'<option value="link">Links</option>';
-	select.addEventListener('change', function(event) {
+	select.addEventListener('change', function() {
 		updateVisiblePane(select, dialog);
 	});
 	select.autofocus = true;
@@ -173,7 +175,7 @@ var focusNext = function(selector) {
 	if (target) {
 		focus(target);
 	}
-}
+};
 
 var focusPrev = function(selector) {
 	var target;
@@ -187,9 +189,9 @@ var focusPrev = function(selector) {
 	if (target) {
 		focus(target);
 	}
-}
+};
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request) {
 	if (document.getElementById(DIALOG_ID)) {
 		return;
 	} else if (request === 'showA11yOutline') {
