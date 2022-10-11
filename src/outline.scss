@@ -8,6 +8,14 @@
 	border-radius: 0;
 }
 
+.a11y-outline-target {
+	outline: 5px solid #26c !important;
+
+	@media (prefers-color-scheme: dark) {
+		outline-color: #3ae !important;
+	}
+}
+
 #a11y-outline {
 	--color-bg: #fff;
 	--color-fg: #111;

@@ -16,11 +16,21 @@ var focus = function(el) {
 	}
 };
 
+var setTarget = function(target) {
+	document.querySelectorAll('.a11y-outline-target').forEach(el => {
+		el.classList.remove('a11y-outline-target');
+	});
+	if (target) {
+		target.classList.add('a11y-outline-target');
+	}
+};
+
 var createDialog = function() {
 	var dialog = document.createElement('dialog');
 	dialog.id = DIALOG_ID;
 	dialog.addEventListener('close', function() {
 		dialog.remove();
+		setTarget(null);
 	});
 	document.body.appendChild(dialog);
 	return dialog;
@@ -82,11 +92,39 @@ var renderTree = function(role, dialog) {
 
 			var href = event.target.getAttribute('href');
 			var i = parseInt(href.substr(1), 10);
-			var el = matches[i];
+			var target = matches[i];
 
-			focus(el);
+			focus(target);
 		}
 	});
+
+	var getTarget = function(a) {
+		var href = a.getAttribute('href');
+		var i = parseInt(href.substr(1), 10);
+		return matches[i];
+	};
+
+	var targetSelected = function() {
+		var target = null;
+
+		if (ul === document.activeElement) {
+			var selected = ul.querySelector('[aria-selected="true"] a');
+			target = getTarget(selected);
+		}
+
+		setTarget(target);
+	};
+
+	ul.addEventListener('mouseover', event => {
+		if (event.target.matches('a')) {
+			var target = getTarget(event.target);
+			setTarget(target);
+		}
+	});
+	ul.addEventListener('mouseout', targetSelected);
+	ul.addEventListener('focus', targetSelected);
+	ul.addEventListener('select', targetSelected);
+	ul.addEventListener('blur', targetSelected);
 
 	dialog.appendChild(ul);
 };

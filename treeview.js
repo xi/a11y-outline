@@ -31,6 +31,9 @@ var select = function(item) {
 			old.setAttribute('aria-selected', false);
 		}
 		item.setAttribute('aria-selected', true);
+
+		var event = new CustomEvent('select', {bubbles: true});
+		item.dispatchEvent(event);
 	}
 };
 
