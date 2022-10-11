@@ -1,23 +1,47 @@
 @charset "UTF-8";
-#a11y-outline .treeview button, #a11y-outline select {
+#a11y-outline .treeview button, #a11y-outline select, #a11y-outline .close {
   font-size: inherit;
+  line-height: 1.2;
   color: inherit;
   padding: 0.5em;
-  background-color: #eee;
-  border: 1px solid #ccc;
+  background-color: var(--color-tint);
+  border: 1px solid var(--color-border);
   border-radius: 0;
 }
 
+.a11y-outline-target {
+  outline: 5px solid #26c !important;
+}
+@media (prefers-color-scheme: dark) {
+  .a11y-outline-target {
+    outline-color: #3ae !important;
+  }
+}
+
 #a11y-outline {
-  font-size: 0.9em;
+  --color-bg: #fff;
+  --color-fg: #111;
+  --color-border: #ccc;
+  --color-focus: #26c;
+  --color-tint: #eee;
+  font-size: initial;
   line-height: 1.4;
-  background: #fff;
-  color: #111;
+  background: var(--color-bg);
+  color: var(--color-fg);
   max-width: 40em;
   text-align: start;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   border-radius: 0.3em;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.3);
+}
+@media (prefers-color-scheme: dark) {
+  #a11y-outline {
+    --color-bg: #111;
+    --color-fg: #fff;
+    --color-border: #222;
+    --color-focus: #3ae;
+    --color-tint: #444;
+  }
 }
 #a11y-outline [hidden] {
   display: none !important;
@@ -25,9 +49,18 @@
 #a11y-outline * {
   all: revert;
 }
-#a11y-outline select {
-  width: 100%;
+#a11y-outline header {
+  display: flex;
+  gap: 0.5em;
   margin: 0 0 1em;
+}
+#a11y-outline .close {
+  box-sizing: content-box;
+  min-width: 1.2em;
+  text-align: center;
+}
+#a11y-outline select {
+  flex-grow: 1;
 }
 #a11y-outline ul {
   margin: 0;
@@ -48,7 +81,7 @@
   outline: 1px dotted;
 }
 #a11y-outline .treeview:focus [aria-selected=true] > a {
-  color: #26c;
+  color: var(--color-focus);
 }
 #a11y-outline .treeview [role=treeitem] {
   position: relative;
