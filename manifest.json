@@ -27,6 +27,12 @@
     },
     "prev-landmark": {
       "description": "go to previous landmark"
+    },
+    "next-heading": {
+      "description": "go to next heading"
+    },
+    "prev-heading": {
+      "description": "go to previous heading"
     }
   },
 

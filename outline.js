@@ -200,5 +200,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		focusNext('landmark');
 	} else if (request === 'prev-landmark') {
 		focusPrev('landmark');
+	} else if (request === 'next-heading') {
+		focusNext('heading');
+	} else if (request === 'prev-heading') {
+		focusPrev('heading');
 	}
 });
