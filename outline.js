@@ -115,13 +115,18 @@ var renderTree = function(role, dialog) {
 		setTarget(target);
 	};
 
+	var mouseoutTimeoutId = null;
 	ul.addEventListener('mouseover', event => {
 		if (event.target.matches('a')) {
+			clearTimeout(mouseoutTimeoutId);
 			var target = getTarget(event.target);
 			setTarget(target);
 		}
 	});
-	ul.addEventListener('mouseout', targetSelected);
+	ul.addEventListener('mouseout', () => {
+		clearTimeout(mouseoutTimeoutId);
+		mouseoutTimeoutId = setTimeout(targetSelected, 100);
+	});
 	ul.addEventListener('focus', targetSelected);
 	ul.addEventListener('select', targetSelected);
 	ul.addEventListener('blur', targetSelected);
