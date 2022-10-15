@@ -223,7 +223,7 @@ var focusNext = function(selector) {
 var focusPrev = function(selector) {
 	var target;
 	walk(document, function(node) {
-		if (node === document.activeElement) {
+		if (target && node === document.activeElement) {
 			throw 'StopIteration';
 		} else if (aria.matches(node, selector)) {
 			target = node;
