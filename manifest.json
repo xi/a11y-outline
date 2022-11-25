@@ -1,18 +1,32 @@
 {
   "manifest_version": 2,
-
   "name": "a11y-outline",
+  "author": "Tobias Bengfort",
+  "homepage_url": "https://github.com/xi/a11y-outline",
   "description": "navigate page outlines easily",
   "version": "1.5.0",
+  "browser_action": {
+    "default_title": "A11y Outline",
+    "default_icon": "icon-128.png"
+  },
   "icons": {
     "128": "icon-128.png"
   },
-
-  "browser_action": {
-    "default_icon": "icon-128.png",
-    "default_title": "A11y Outline"
+  "background": {
+    "scripts": ["bg.js"],
+    "persistent": false
   },
-
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": [
+      "vendor/aria.js",
+      "treeview.js",
+      "outline.js"
+    ]
+  }],
+  "web_accessible_resources": [
+    "outline.css"
+  ],
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
@@ -35,26 +49,7 @@
       "description": "go to previous heading"
     }
   },
-
-  "background": {
-    "scripts": ["bg.js"],
-    "persistent": false
-  },
-
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": [
-      "vendor/aria.js",
-      "treeview.js",
-      "outline.js"
-    ]
-  }],
-
   "permissions": [
     "<all_urls>"
-  ],
-
-  "web_accessible_resources": [
-    "outline.css"
   ]
 }
