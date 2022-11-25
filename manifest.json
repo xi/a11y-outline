@@ -51,5 +51,10 @@
   },
   "permissions": [
     "<all_urls>"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{34e8d1d4-286c-4cb8-96d3-9eecd0665c0f}"
+    }
+  }
 }
