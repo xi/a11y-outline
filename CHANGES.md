@@ -1,3 +1,10 @@
+# 1.5.1 (2023-01-08)
+
+-   update aria-api to 0.4.5
+-   cycle on focusPrev()
+-   add explicit extension ID
+
+
 # 1.5.0 (2022-10-11)
 
 -   highlight target on focus/hover
