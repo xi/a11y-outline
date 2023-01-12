@@ -1,3 +1,8 @@
+@keyframes spin {
+	from {transform: rotate(0)}
+	to {transform: rotate(1turn)}
+}
+
 %button-base {
 	font-size: inherit;
 	line-height: 1.2;
@@ -75,6 +80,17 @@
 
 	.treeview {
 		outline: 0;
+
+		&:empty {
+			box-sizing: border-box;
+			width: 2em;
+			height: 2em;
+			margin: 0 auto;
+			border: 3px solid;
+			border-top-color: transparent;
+			border-radius: 50%;
+			animation: spin 2s infinite linear;
+		}
 
 		[aria-expanded="false"] ul {
 			display: none;
