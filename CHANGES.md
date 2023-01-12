@@ -1,6 +1,6 @@
 # 1.5.1 (2023-01-08)
 
--   update aria-api to 0.4.5
+-   update aria-api to 0.4.6
 -   cycle on focusPrev()
 -   add explicit extension ID
 
