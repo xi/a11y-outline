@@ -4,7 +4,7 @@ bundle.zip: manifest.json icon-128.png bg.js outline.js treeview.js outline.css 
 
 vendor:
 	mkdir -p vendor
-	wget https://raw.githubusercontent.com/xi/aria-api/0.4.6/dist/aria.js -O vendor/aria.js
+	wget https://raw.githubusercontent.com/xi/aria-api/0.4.7/dist/aria.js -O vendor/aria.js
 
 icon-128.png: icon.svg
 	inkscape $< --export-filename=$@
