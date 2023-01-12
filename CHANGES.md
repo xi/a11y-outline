@@ -1,3 +1,9 @@
+# 1.5.2 (2023-01-12)
+
+-   update aria-api to 0.4.7
+-   show a spinner if gathering the data takes a long time
+
+
 # 1.5.1 (2023-01-08)
 
 -   update aria-api to 0.4.6
