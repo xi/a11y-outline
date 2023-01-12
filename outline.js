@@ -1,4 +1,4 @@
-/* global chrome, aria, treeview */
+/* global chrome, aria, treeview, updateTree */
 
 var DIALOG_ID = 'a11y-outline';
 
@@ -80,53 +80,57 @@ var buildTree = function(matches) {
 };
 
 var renderTree = function(role, dialog) {
-	var matches = getMatches(role);
-	var tree = buildTree(matches);
-
-	var ul = treeview(tree, dialog.id + '-' + role);
-
-	var getTarget = function(a) {
-		var href = a.getAttribute('href');
-		var i = parseInt(href.substr(1), 10);
-		return matches[i];
-	};
-
-	ul.addEventListener('click', function(event) {
-		if (event.target.matches('a')) {
-			event.preventDefault();
-			dialog.close();
-			focus(getTarget(event.target));
-		}
-	});
-
-	var targetSelected = function() {
-		var target = null;
-
-		if (ul === document.activeElement) {
-			var selected = ul.querySelector('[aria-selected="true"] a');
-			target = getTarget(selected);
-		}
-
-		setTarget(target);
-	};
-
-	var mouseoutTimeoutId = null;
-	ul.addEventListener('mouseover', event => {
-		if (event.target.matches('a')) {
-			clearTimeout(mouseoutTimeoutId);
-			var target = getTarget(event.target);
-			setTarget(target);
-		}
-	});
-	ul.addEventListener('mouseout', () => {
-		clearTimeout(mouseoutTimeoutId);
-		mouseoutTimeoutId = setTimeout(targetSelected, 100);
-	});
-	ul.addEventListener('focus', targetSelected);
-	ul.addEventListener('select', targetSelected);
-	ul.addEventListener('blur', targetSelected);
+	var ul = treeview([], dialog.id + '-' + role);
 
 	dialog.appendChild(ul);
+
+	setTimeout(() => {
+		var matches = getMatches(role);
+		var tree = buildTree(matches);
+
+		updateTree(ul, tree, ul.id);
+
+		var getTarget = function(a) {
+			var href = a.getAttribute('href');
+			var i = parseInt(href.substr(1), 10);
+			return matches[i];
+		};
+
+		ul.addEventListener('click', function(event) {
+			if (event.target.matches('a')) {
+				event.preventDefault();
+				dialog.close();
+				focus(getTarget(event.target));
+			}
+		});
+
+		var targetSelected = function() {
+			var target = null;
+
+			if (ul === document.activeElement) {
+				var selected = ul.querySelector('[aria-selected="true"] a');
+				target = getTarget(selected);
+			}
+
+			setTarget(target);
+		};
+
+		var mouseoutTimeoutId = null;
+		ul.addEventListener('mouseover', event => {
+			if (event.target.matches('a')) {
+				clearTimeout(mouseoutTimeoutId);
+				var target = getTarget(event.target);
+				setTarget(target);
+			}
+		});
+		ul.addEventListener('mouseout', () => {
+			clearTimeout(mouseoutTimeoutId);
+			mouseoutTimeoutId = setTimeout(targetSelected, 100);
+		});
+		ul.addEventListener('focus', targetSelected);
+		ul.addEventListener('select', targetSelected);
+		ul.addEventListener('blur', targetSelected);
+	});
 };
 
 var updateVisiblePane = function(select, dialog) {
@@ -179,15 +183,18 @@ var quickNav = function() {
 };
 
 var _walk = function(root, fn) {
-	fn(root);
-	aria.getChildNodes(root).forEach(function(child) {
-		_walk(child, fn);
-	});
+	var owners = document.querySelectorAll('[aria-owns]');
+	var queue = [root];
+	while (queue.length) {
+		var item = queue.shift();
+		fn(item);
+		queue = aria.getChildNodes(item, owners).concat(queue);
+	}
 };
 
 var walk = function(root, fn) {
 	try {
-		_walk(document, function(node) {
+		_walk(root, function(node) {
 			if (node.nodeType === node.ELEMENT_NODE) {
 				fn(node);
 			}

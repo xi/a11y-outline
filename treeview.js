@@ -170,12 +170,17 @@ var buildItem = function(data, id) {
 	return item;
 };
 
-var buildList = function(data, id) {
-	var list = document.createElement('ul');
+var updateList = function(list, data, id) {
+	list.innerHTML = '';
 	data.forEach(function(child, i) {
 		var item = buildItem(child, id + '.' + i);
 		list.appendChild(item);
 	});
+};
+
+var buildList = function(data, id) {
+	var list = document.createElement('ul');
+	updateList(list, data, id);
 	return list;
 };
 
@@ -185,8 +190,16 @@ var buildGroup = function(data, id) {
 	return group;
 };
 
+var updateTree = function(tree, data, id) {
+	tree.innerHTML = '';
+	updateList(tree, data, id);
+
+	var first = tree.querySelector('[role="treeitem"]');
+	select(first);
+};
+
 var buildTree = function(data, id) {
-	var tree = buildList(data, id);
+	var tree = document.createElement('ul');
 	tree.setAttribute('role', 'tree');
 	tree.tabIndex = 0;
 	tree.id = id;
@@ -202,10 +215,9 @@ var buildTree = function(data, id) {
 		this.focus();
 	});
 
-	var first = tree.querySelector('[role="treeitem"]');
-	select(first);
-
+	updateTree(tree, data, id);
 	return tree;
 };
 
 window.treeview = buildTree;
+window.updateTree = updateTree;
