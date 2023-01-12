@@ -85,24 +85,19 @@ var renderTree = function(role, dialog) {
 
 	var ul = treeview(tree, dialog.id + '-' + role);
 
-	ul.addEventListener('click', function(event) {
-		if (event.target.matches('a')) {
-			event.preventDefault();
-			dialog.close();
-
-			var href = event.target.getAttribute('href');
-			var i = parseInt(href.substr(1), 10);
-			var target = matches[i];
-
-			focus(target);
-		}
-	});
-
 	var getTarget = function(a) {
 		var href = a.getAttribute('href');
 		var i = parseInt(href.substr(1), 10);
 		return matches[i];
 	};
+
+	ul.addEventListener('click', function(event) {
+		if (event.target.matches('a')) {
+			event.preventDefault();
+			dialog.close();
+			focus(getTarget(event.target));
+		}
+	});
 
 	var targetSelected = function() {
 		var target = null;
