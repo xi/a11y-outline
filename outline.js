@@ -178,7 +178,9 @@ var quickNav = function() {
 	dialog.appendChild(style);
 
 	updateVisiblePane(select, dialog);
-	dialog.showModal();
+	style.addEventListener('load', () => {
+		dialog.showModal();
+	});
 };
 
 var _walk = function(root, fn) {
