@@ -88,7 +88,11 @@ var renderTree = function(role, dialog) {
 		var matches = getMatches(role);
 		var tree = buildTree(matches);
 
-		updateTree(ul, tree, ul.id);
+		if (matches.length) {
+			updateTree(ul, tree, ul.id);
+		} else {
+			ul.innerHTML = '<li><em>Nothing found</em></li>';
+		}
 
 		var getTarget = function(a) {
 			var href = a.getAttribute('href');
