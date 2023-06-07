@@ -81,6 +81,7 @@ var buildTree = function(matches) {
 
 var renderTree = function(role, dialog) {
 	var ul = treeview([], dialog.id + '-' + role);
+	ul.setAttribute('aria-busy', 'true');
 
 	dialog.appendChild(ul);
 
@@ -93,6 +94,7 @@ var renderTree = function(role, dialog) {
 		} else {
 			ul.innerHTML = '<li><em>Nothing found</em></li>';
 		}
+		ul.setAttribute('aria-busy', 'false');
 
 		var getTarget = function(a) {
 			var href = a.getAttribute('href');
