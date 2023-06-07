@@ -1,3 +1,10 @@
+# 1.6.0 (2023-06-07)
+
+-   update aria-api to 0.5.0
+-   set aria-busy for spinner
+-   fix: do not show spinner if no items are found
+
+
 # 1.5.2 (2023-01-12)
 
 -   update aria-api to 0.4.7
