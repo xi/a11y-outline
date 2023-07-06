@@ -9,8 +9,5 @@ vendor:
 icon-128.png: icon.svg
 	convert -resize 128x -background transparent $< $@
 
-outline.css: src/outline.scss
-	npx sass $< $@
-
 clean:
 	rm -rf vendor outline.css
