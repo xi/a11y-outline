@@ -22,18 +22,15 @@
 }
 
 #a11y-outline {
-	--color-bg: #fff;
-	--color-fg: #111;
-	--color-border: #ccc;
+	--color-border: rgba(0,0,0,0.2);
 	--color-focus: #26c;
-	--color-tint: #eee;
+	--color-tint: rgba(0,0,0,0.1);
 
 	@media (prefers-color-scheme: dark) {
-		--color-bg: #111;
-		--color-fg: #fff;
-		--color-border: #222;
+		--color-border: rgba(255,255,255,0.2);
 		--color-focus: #3ae;
-		--color-tint: #444;
+		--color-tint: rgba(255,255,255,0.1);
+		color-scheme: dark;
 	}
 
 	[hidden] {
@@ -46,8 +43,6 @@
 
 	font-size: initial;
 	line-height: 1.4;
-	background: var(--color-bg);
-	color: var(--color-fg);
 	text-align: start;
 	max-width: 40em;
 	border: 1px solid var(--color-border);
