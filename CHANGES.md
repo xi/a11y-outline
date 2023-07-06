@@ -1,3 +1,11 @@
+# 1.6.1 (2023-07-06)
+
+-   fix: do not include contents of dialog in results
+-   fix: transparent background for extension icon
+-   fix: ignore host site styling for dialogs
+-   tweak colors in dark mode
+
+
 # 1.6.0 (2023-06-07)
 
 -   update aria-api to 0.5.0
