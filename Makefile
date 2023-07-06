@@ -10,4 +10,4 @@ icon-128.png: icon.svg
 	convert -resize 128x -background transparent $< $@
 
 clean:
-	rm -rf vendor outline.css
+	rm -rf vendor icon-128.png bundle.zip
