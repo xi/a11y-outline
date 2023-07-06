@@ -83,6 +83,10 @@
 	display: none;
 }
 
+#a11y-outline .treeview [aria-expanded] {
+  list-style: none;
+}
+
 /* link */
 #a11y-outline .treeview a {
 	color: inherit;
