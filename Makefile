@@ -7,7 +7,7 @@ vendor:
 	wget https://raw.githubusercontent.com/xi/aria-api/0.5.0/dist/aria.js -O vendor/aria.js
 
 icon-128.png: icon.svg
-	inkscape $< --export-filename=$@
+	convert -resize 128x -background transparent $< $@
 
 outline.css: src/outline.scss
 	npx sass $< $@
