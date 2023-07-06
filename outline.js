@@ -86,7 +86,7 @@ var renderTree = function(role, dialog) {
 	dialog.appendChild(ul);
 
 	setTimeout(() => {
-		var matches = getMatches(role);
+		var matches = getMatches(role).filter(el => !dialog.contains(el));
 		var tree = buildTree(matches);
 
 		if (matches.length) {
