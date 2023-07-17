@@ -16,14 +16,6 @@
     "scripts": ["bg.js"],
     "persistent": false
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": [
-      "vendor/aria.js",
-      "treeview.js",
-      "outline.js"
-    ]
-  }],
   "web_accessible_resources": [
     "outline.css"
   ],
@@ -50,7 +42,7 @@
     }
   },
   "permissions": [
-    "<all_urls>"
+    "activeTab"
   ],
   "browser_specific_settings": {
     "gecko": {
