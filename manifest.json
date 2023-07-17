@@ -16,9 +16,6 @@
     "scripts": ["bg.js"],
     "persistent": false
   },
-  "web_accessible_resources": [
-    "outline.css"
-  ],
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {

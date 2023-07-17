@@ -11,12 +11,14 @@ var wrap = function(fn) {
 };
 
 var executeScript = wrap(chrome.tabs.executeScript);
+var insertCSS = wrap(chrome.tabs.insertCSS);
 
 var injectCode = function() {
 	return Promise.all([
 		executeScript({file: '/vendor/aria.js'}),
 		executeScript({file: '/treeview.js'}),
 		executeScript({file: '/outline.js'}),
+		insertCSS({file: '/outline.css'}),
 	]);
 };
 

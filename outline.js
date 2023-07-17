@@ -1,4 +1,4 @@
-/* global chrome, aria, treeview, updateTree */
+/* global aria, treeview, updateTree */
 
 var DIALOG_ID = 'a11y-outline';
 
@@ -177,15 +177,8 @@ var quickNav = function() {
 	close.tabIndex = -1;
 	header.appendChild(close);
 
-	var style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.href = chrome.runtime.getURL('outline.css');
-	dialog.appendChild(style);
-
 	updateVisiblePane(select, dialog);
-	style.addEventListener('load', () => {
-		dialog.showModal();
-	});
+	dialog.showModal();
 };
 
 var _walk = function(root, fn) {
