@@ -5,7 +5,7 @@
   "homepage_url": "https://github.com/xi/a11y-outline",
   "description": "navigate page outlines easily",
   "version": "1.6.1",
-  "browser_action": {
+  "action": {
     "default_title": "A11y Outline",
     "default_icon": "icon-128.png"
   },
@@ -17,7 +17,7 @@
     "persistent": false
   },
   "commands": {
-    "_execute_browser_action": {
+    "_execute_action": {
       "suggested_key": {
         "default": "Ctrl+Shift+7"
       }

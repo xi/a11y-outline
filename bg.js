@@ -30,7 +30,7 @@ var injectCode = function(tab) {
 	]);
 };
 
-chrome.browserAction.onClicked.addListener(function(tab) {
+chrome.action.onClicked.addListener(function(tab) {
 	injectCode(tab).then(() => {
 		chrome.tabs.sendMessage(tab.id, 'showA11yOutline');
 	});
