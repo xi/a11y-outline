@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "a11y-outline",
   "author": "Tobias Bengfort",
   "homepage_url": "https://github.com/xi/a11y-outline",
