@@ -10,27 +10,35 @@ var wrap = function(fn) {
 	};
 };
 
-var executeScript = wrap(chrome.tabs.executeScript);
-var insertCSS = wrap(chrome.tabs.insertCSS);
+var executeScript = wrap(chrome.scripting.executeScript);
+var insertCSS = wrap(chrome.scripting.insertCSS);
 
-var injectCode = function() {
+var injectCode = function(tab) {
 	return Promise.all([
-		executeScript({file: '/vendor/aria.js'}),
-		executeScript({file: '/treeview.js'}),
-		executeScript({file: '/outline.js'}),
-		insertCSS({file: '/outline.css'}),
+		executeScript({
+			target: {tabId: tab.id},
+			files: [
+				'/vendor/aria.js',
+				'/treeview.js',
+				'/outline.js',
+			],
+		}),
+		insertCSS({
+			target: {tabId: tab.id},
+			files: ['/outline.css'],
+		}),
 	]);
 };
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-	injectCode().then(() => {
+	injectCode(tab).then(() => {
 		chrome.tabs.sendMessage(tab.id, 'showA11yOutline');
 	});
 });
 
 chrome.commands.onCommand.addListener(function(command) {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		injectCode().then(() => {
+		injectCode(tabs[0]).then(() => {
 			chrome.tabs.sendMessage(tabs[0].id, command);
 		});
 	});

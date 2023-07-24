@@ -39,7 +39,8 @@
     }
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "scripting"
   ],
   "browser_specific_settings": {
     "gecko": {
