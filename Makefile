@@ -1,6 +1,12 @@
-a11y-outline.zip: manifest.json icon-128.png bg.js outline.js treeview.js outline.css vendor
+a11y-outline.firefox.zip: manifest.json icon-128.png bg.js outline.js treeview.js outline.css vendor
 	rm -f $@
 	zip -r $@ $^
+
+a11y-outline.chromium.zip: manifest.chromium.json icon-128.png bg.js outline.js treeview.js outline.css vendor
+	mkdir chromium
+	cp -r $^ chromium
+	cd chromium && mv manifest.chromium.json manifest.json && zip -r ../$@ *
+	rm -r chromium
 
 vendor:
 	mkdir -p vendor

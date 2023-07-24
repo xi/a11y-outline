@@ -13,7 +13,7 @@
     "128": "icon-128.png"
   },
   "background": {
-    "scripts": ["bg.js"]
+    "service_worker": "bg.js"
   },
   "commands": {
     "_execute_action": {
@@ -40,10 +40,5 @@
   "permissions": [
     "activeTab",
     "scripting"
-  ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{34e8d1d4-286c-4cb8-96d3-9eecd0665c0f}"
-    }
-  }
+  ]
 }
