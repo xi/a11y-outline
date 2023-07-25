@@ -1,4 +1,4 @@
-bundle.zip: manifest.json icon-128.png bg.js outline.js treeview.js outline.css vendor
+a11y-outline.zip: manifest.json icon-128.png bg.js outline.js treeview.js outline.css vendor
 	rm -f $@
 	zip -r $@ $^
 
