@@ -34,7 +34,7 @@ A bookmarklet is available on <https://xi.github.io/a11y-outline/>.
 
 ## Building manually
 
-Running `make` should be sufficient. This requires `npx`.
+Running `make` should be sufficient.
 
 # Usage
 
