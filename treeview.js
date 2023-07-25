@@ -219,5 +219,7 @@ var buildTree = function(data, id) {
 	return tree;
 };
 
-window.treeview = buildTree;
-window.updateTree = updateTree;
+window.treeview = {
+	build: buildTree,
+	update: updateTree,
+};

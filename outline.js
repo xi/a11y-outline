@@ -1,4 +1,4 @@
-/* global aria, treeview, updateTree */
+/* global aria, treeview */
 
 var DIALOG_ID = 'a11y-outline';
 
@@ -80,7 +80,7 @@ var buildTree = function(matches) {
 };
 
 var renderTree = function(role, dialog) {
-	var ul = treeview([], dialog.id + '-' + role);
+	var ul = treeview.build([], dialog.id + '-' + role);
 	ul.setAttribute('aria-busy', 'true');
 
 	dialog.appendChild(ul);
@@ -90,7 +90,7 @@ var renderTree = function(role, dialog) {
 		var tree = buildTree(matches);
 
 		if (matches.length) {
-			updateTree(ul, tree, ul.id);
+			treeview.update(ul, tree, ul.id);
 		} else {
 			ul.innerHTML = '<li><em>Nothing found</em></li>';
 		}
