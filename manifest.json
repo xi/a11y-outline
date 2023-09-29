@@ -4,7 +4,7 @@
   "author": "Tobias Bengfort",
   "homepage_url": "https://github.com/xi/a11y-outline",
   "description": "navigate page outlines easily",
-  "version": "1.6.1",
+  "version": "2.0.0",
   "action": {
     "default_title": "A11y Outline",
     "default_icon": "icon-128.png"

@@ -1,3 +1,9 @@
+# 2.0.0 (2023-09-29)
+
+-   switch to manifest v3
+-   require less permissions (`activeTab` instead of `<all_urls>`)
+
+
 # 1.6.1 (2023-07-06)
 
 -   fix: do not include contents of dialog in results
