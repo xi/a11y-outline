@@ -219,7 +219,7 @@ var buildTree = function(data, id) {
 	return tree;
 };
 
-window.treeview = {
+module.exports = {
 	build: buildTree,
 	update: updateTree,
 };

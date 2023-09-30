@@ -1,4 +1,5 @@
-/* global aria, treeview */
+var aria = require('aria-api');
+var treeview = require('./treeview');
 
 var DIALOG_ID = 'a11y-outline';
 
