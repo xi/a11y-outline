@@ -16,7 +16,7 @@ This is mainly useful for two audiences:
 
 ## Firefox
 
-See <https://addons.mozilla.org/de/firefox/addon/a11y-outline/>
+See <https://addons.mozilla.org/firefox/addon/a11y-outline/>
 
 ## Chrome
 
