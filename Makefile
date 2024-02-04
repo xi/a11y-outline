@@ -16,4 +16,4 @@ icon-128.png: icon.svg
 	convert -resize 128x -background transparent $< $@
 
 clean:
-	rm -rf vendor icon-128.png bundle.zip
+	rm -rf vendor icon-128.png a11y-outline.firefox.zip a11y-outline.chromium.zip
