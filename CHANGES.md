@@ -1,3 +1,8 @@
+# 2.1.0 (2024-02-04)
+
+-   update aria-api to 0.6.0
+
+
 # 2.0.0 (2023-09-29)
 
 -   switch to manifest v3
