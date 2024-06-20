@@ -2,11 +2,7 @@
 
 var wrap = function(fn) {
 	return function(...args) {
-		return new Promise((resolve) => {
-			fn(...args, result => {
-				resolve(result);
-			});
-		});
+		return new Promise(resolve => fn(...args, resolve));
 	};
 };
 
