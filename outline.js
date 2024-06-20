@@ -158,10 +158,11 @@ var quickNav = function() {
 	dialog.appendChild(header);
 
 	var select = document.createElement('select');
-	select.innerHTML =
-		'<option value="landmark">Landmarks</option>' +
-		'<option value="heading">Headings</option>' +
-		'<option value="link">Links</option>';
+	select.innerHTML = `
+		<option value="landmark">Landmarks</option>
+		<option value="heading">Headings</option>
+		<option value="link">Links</option>
+	`;
 	select.addEventListener('change', function() {
 		updateVisiblePane(select, dialog);
 	});
