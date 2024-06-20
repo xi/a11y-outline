@@ -162,6 +162,8 @@ var quickNav = function() {
 		<option value="landmark">Landmarks</option>
 		<option value="heading">Headings</option>
 		<option value="link">Links</option>
+		<option value="input">Form Fields</option>
+		<option value="button">Buttons</option>
 	`;
 	select.addEventListener('change', function() {
 		updateVisiblePane(select, dialog);
