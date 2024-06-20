@@ -237,7 +237,14 @@ var focusPrev = function(selector) {
 	}
 };
 
-chrome.runtime.onMessage.addListener(function(request) {
+var onMessage = function(listener) {
+	if (!window.a11yOutlineRegistered) {
+		window.a11yOutlineRegistered = true;
+		chrome.runtime.onMessage.addListener(listener);
+	}
+}
+
+onMessage(function(request) {
 	if (document.getElementById(DIALOG_ID)) {
 		return;
 	} else if (request === 'showA11yOutline') {
