@@ -1,3 +1,10 @@
+# 2.2.0 (2024-06-23)
+
+-   add "Form fields" and "Buttons" lists
+-   update aria-api to 0.7.0
+-   fix: do not perform shortcut actions multiple times
+
+
 # 2.1.0 (2024-02-04)
 
 -   update aria-api to 0.6.0
