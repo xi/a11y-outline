@@ -15,13 +15,13 @@ var injectCode = function(tab) {
 			target: {tabId: tab.id},
 			files: [
 				'/vendor/aria.js',
-				'/treeview.js',
-				'/outline.js',
+				'/src/treeview.js',
+				'/src/outline.js',
 			],
 		}),
 		insertCSS({
 			target: {tabId: tab.id},
-			files: ['/outline.css'],
+			files: ['/src/outline.css'],
 		}),
 	]);
 };
