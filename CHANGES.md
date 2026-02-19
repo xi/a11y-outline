@@ -1,3 +1,9 @@
+# 2.3.0 (2026-02-19)
+
+-   update aria-api to 0.9.1 (adding support for shadow DOM)
+-   add 48px icon
+
+
 # 2.2.0 (2024-06-23)
 
 -   add "Form fields" and "Buttons" lists
