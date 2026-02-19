@@ -10,7 +10,7 @@ a11y-outline.chromium.zip: manifest.chromium.json icons/icon-48.png icons/icon-1
 
 vendor:
 	mkdir -p vendor
-	wget https://raw.githubusercontent.com/xi/aria-api/0.7.0/dist/aria.js -O vendor/aria.js
+	wget https://raw.githubusercontent.com/xi/aria-api/0.9.1/dist/aria.js -O vendor/aria.js
 
 icons/icon-48.png: icons/icon.svg
 	convert -resize 48x -background transparent $< $@
