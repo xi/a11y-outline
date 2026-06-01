@@ -3,10 +3,9 @@ a11y-outline.firefox.zip: manifest.json icons/icon-48.png icons/icon-128.png src
 	zip -r $@ $^
 
 a11y-outline.chromium.zip: manifest.chromium.json icons/icon-48.png icons/icon-128.png src vendor
-	mkdir chromium
-	cp -r $^ chromium
-	cd chromium && mv manifest.chromium.json manifest.json && zip -r ../$@ *
-	rm -r chromium
+	rm -f $@
+	zip -r $@ $^
+	printf "@ manifest.chromium.json\n@=manifest.json\n" | zipnote -w $@
 
 vendor:
 	mkdir -p vendor
