@@ -1,3 +1,9 @@
+# 2.4.0 (2026-11-11)
+
+-   update aria-api to 0.9.2
+-   make target outline adapt to the host page color scheme
+
+
 # 2.3.1 (2026-06-01)
 
 -   fix icon paths in chromium bundle
