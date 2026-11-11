@@ -2,7 +2,7 @@
 
 var DIALOG_ID = 'a11y-outline';
 
-var focus = function(el) {
+function focus(el) {
 	el.focus();
 	if (document.activeElement !== el) {
 		el.tabIndex = -1;
@@ -14,29 +14,29 @@ var focus = function(el) {
 	if (y > h / 2) {
 		document.scrollingElement.scrollBy(0, y - h / 2);
 	}
-};
+}
 
-var setTarget = function(target) {
+function setTarget(target) {
 	document.querySelectorAll('.a11y-outline-target').forEach(el => {
 		el.classList.remove('a11y-outline-target');
 	});
 	if (target) {
 		target.classList.add('a11y-outline-target');
 	}
-};
+}
 
-var createDialog = function() {
+function createDialog() {
 	var dialog = document.createElement('dialog');
 	dialog.id = DIALOG_ID;
-	dialog.addEventListener('close', function() {
+	dialog.addEventListener('close', () => {
 		dialog.remove();
 		setTarget(null);
 	});
 	document.body.appendChild(dialog);
 	return dialog;
-};
+}
 
-var createItem = function(el, i) {
+function createItem(el, i) {
 	var label = aria.getAttribute(el, 'roledescription') || aria.getRole(el);
 	if (aria.matches(el, 'heading')) {
 		label += ' ' + aria.getAttribute(el, 'level');
@@ -52,9 +52,9 @@ var createItem = function(el, i) {
 		children: [],
 		element: el,
 	};
-};
+}
 
-var insertItem = function(item, list) {
+function insertItem(item, list) {
 	var itemLevel = aria.getAttribute(item.element, 'level');
 	var last = list[list.length - 1];
 	if (last) {
@@ -64,22 +64,22 @@ var insertItem = function(item, list) {
 		}
 	}
 	list.push(item);
-};
+}
 
-var getMatches = function(role) {
+function getMatches(role) {
 	return aria.querySelectorAll(document, role)
 		.filter(el => !aria.matches(el, ':hidden'));
-};
+}
 
-var buildTree = function(matches) {
+function buildTree(matches) {
 	var items = [];
 	for (var i = 0; i < matches.length; i++) {
 		insertItem(createItem(matches[i], i), items);
 	}
 	return items;
-};
+}
 
-var renderTree = function(role, dialog) {
+function renderTree(role, dialog) {
 	var ul = treeview.build([], dialog.id + '-' + role);
 	ul.setAttribute('aria-busy', 'true');
 
@@ -102,7 +102,7 @@ var renderTree = function(role, dialog) {
 			return matches[i];
 		};
 
-		ul.addEventListener('click', function(event) {
+		ul.addEventListener('click', event => {
 			if (event.target.matches('a')) {
 				event.preventDefault();
 				dialog.close();
@@ -137,9 +137,9 @@ var renderTree = function(role, dialog) {
 		ul.addEventListener('select', targetSelected);
 		ul.addEventListener('blur', targetSelected);
 	});
-};
+}
 
-var updateVisiblePane = function(select, dialog) {
+function updateVisiblePane(select, dialog) {
 	var id = dialog.id + '-' + select.value;
 	if (!document.getElementById(id)) {
 		renderTree(select.value, dialog);
@@ -149,9 +149,9 @@ var updateVisiblePane = function(select, dialog) {
 	Array.prototype.forEach.call(trees, function(tree) {
 		tree.hidden = (tree.id !== id);
 	});
-};
+}
 
-var quickNav = function() {
+function quickNav() {
 	var dialog = createDialog();
 
 	var header = document.createElement('header');
@@ -182,9 +182,9 @@ var quickNav = function() {
 
 	updateVisiblePane(select, dialog);
 	dialog.showModal();
-};
+}
 
-var _walk = function(root, fn) {
+function _walk(root, fn) {
 	var owners = document.querySelectorAll('[aria-owns]');
 	var queue = [root];
 	while (queue.length) {
@@ -192,9 +192,9 @@ var _walk = function(root, fn) {
 		fn(item);
 		queue = aria.getChildNodes(item, owners).concat(queue);
 	}
-};
+}
 
-var walk = function(root, fn) {
+function walk(root, fn) {
 	try {
 		_walk(root, function(node) {
 			if (node.nodeType === node.ELEMENT_NODE) {
@@ -206,9 +206,9 @@ var walk = function(root, fn) {
 			throw e;
 		}
 	}
-};
+}
 
-var focusNext = function(selector) {
+function focusNext(selector) {
 	var target;
 	var next = false;
 	walk(document, function(node) {
@@ -224,9 +224,9 @@ var focusNext = function(selector) {
 	if (target) {
 		focus(target);
 	}
-};
+}
 
-var focusPrev = function(selector) {
+function focusPrev(selector) {
 	var target;
 	walk(document, function(node) {
 		if (target && node === document.activeElement) {
@@ -238,16 +238,16 @@ var focusPrev = function(selector) {
 	if (target) {
 		focus(target);
 	}
-};
+}
 
-var onMessage = function(listener) {
+function onMessage(listener) {
 	if (!window.a11yOutlineRegistered) {
 		window.a11yOutlineRegistered = true;
 		chrome.runtime.onMessage.addListener(listener);
 	}
 }
 
-onMessage(function(request) {
+onMessage(request => {
 	if (document.getElementById(DIALOG_ID)) {
 		return;
 	} else if (request === 'showA11yOutline') {

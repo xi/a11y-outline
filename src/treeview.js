@@ -1,24 +1,24 @@
 // http://accessibleculture.org/articles/2013/02/not-so-simple-aria-tree-views-and-screen-readers/
 // https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView
 
-var indexOf = function(list, item) {
+function indexOf(list, item) {
 	return Array.prototype.indexOf.call(list, item);
-};
+}
 
 var typeaheadString = '';
 var typeaheadTimeout = null;
-var typeahead = function(c) {
+function typeahead(c) {
 	typeaheadString += c;
 
 	clearTimeout(typeaheadTimeout);
-	typeaheadTimeout = setTimeout(function() {
+	typeaheadTimeout = setTimeout(() => {
 		typeaheadString = '';
 	}, 400);
 
 	return typeaheadString;
-};
+}
 
-var select = function(item) {
+function select(item) {
 	if (item) {
 		var tree = item.closest('[role="tree"]');
 		tree.setAttribute('aria-activedescendant', item.id);
@@ -35,14 +35,14 @@ var select = function(item) {
 		var event = new CustomEvent('select', {bubbles: true});
 		item.dispatchEvent(event);
 	}
-};
+}
 
-var toggleGroup = function(item) {
+function toggleGroup(item) {
 	var expanded = item.getAttribute('aria-expanded') === 'true';
 	item.setAttribute('aria-expanded', !expanded);
-};
+}
 
-var nextItem = function(item, direction, query) {
+function nextItem(item, direction, query) {
 	var next;
 
 	if (direction === 'parent') {
@@ -73,9 +73,9 @@ var nextItem = function(item, direction, query) {
 	}
 
 	select(next);
-};
+}
 
-var onKeyDown = function(event) {
+function onKeyDown(event) {
 	if (!(event.shiftKey || event.ctrlKey || event.altKey || event.metaKey)) {
 		var item = this.querySelector('[aria-selected="true"]');
 
@@ -124,23 +124,23 @@ var onKeyDown = function(event) {
 				}
 		}
 	}
-};
+}
 
-var buildToggle = function() {
+function buildToggle() {
 	var toggle = document.createElement('button');
 	toggle.setAttribute('aria-hidden', true);
 	toggle.tabIndex = -1;
 
-	toggle.addEventListener('click', function(event) {
+	toggle.addEventListener('click', event => {
 		event.preventDefault();
-		var item = this.parentElement;
+		var item = event.currentTarget.parentElement;
 		toggleGroup(item);
 	});
 
 	return toggle;
-};
+}
 
-var buildLink = function(data, id) {
+function buildLink(data, id) {
 	var link = document.createElement('a');
 	link.setAttribute('role', 'presentation');
 	link.tabIndex = -1;
@@ -150,9 +150,9 @@ var buildLink = function(data, id) {
 	link.href = data.href;
 
 	return link;
-};
+}
 
-var buildItem = function(data, id) {
+function buildItem(data, id) {
 	var item = document.createElement('li');
 	item.setAttribute('role', 'treeitem');
 	item.id = id;
@@ -168,37 +168,37 @@ var buildItem = function(data, id) {
 	}
 
 	return item;
-};
+}
 
-var updateList = function(list, data, id) {
+function updateList(list, data, id) {
 	list.innerHTML = '';
-	data.forEach(function(child, i) {
+	data.forEach((child, i) => {
 		var item = buildItem(child, id + '.' + i);
 		list.appendChild(item);
 	});
-};
+}
 
-var buildList = function(data, id) {
+function buildList(data, id) {
 	var list = document.createElement('ul');
 	updateList(list, data, id);
 	return list;
-};
+}
 
-var buildGroup = function(data, id) {
+function buildGroup(data, id) {
 	var group = buildList(data, id);
 	group.setAttribute('role', 'group');
 	return group;
-};
+}
 
-var updateTree = function(tree, data, id) {
+function updateTree(tree, data, id) {
 	tree.innerHTML = '';
 	updateList(tree, data, id);
 
 	var first = tree.querySelector('[role="treeitem"]');
 	select(first);
-};
+}
 
-var buildTree = function(data, id) {
+function buildTree(data, id) {
 	var tree = document.createElement('ul');
 	tree.setAttribute('role', 'tree');
 	tree.tabIndex = 0;
@@ -206,7 +206,7 @@ var buildTree = function(data, id) {
 	tree.className = 'treeview';
 
 	tree.addEventListener('keydown', onKeyDown);
-	tree.addEventListener('click', function(event) {
+	tree.addEventListener('click', event => {
 		var item = event.target;
 		if (!item.matches('[role="treeitem"]')) {
 			item = item.closest('[role="treeitem"]');
@@ -217,7 +217,7 @@ var buildTree = function(data, id) {
 
 	updateTree(tree, data, id);
 	return tree;
-};
+}
 
 window.treeview = {
 	build: buildTree,
