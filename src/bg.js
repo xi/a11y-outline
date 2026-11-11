@@ -18,8 +18,10 @@ function injectCode(tab) {
 }
 
 function sendMessage(tab, msg) {
-	injectCode(tab).then(() => {
-		chrome.tabs.sendMessage(tab.id, msg);
+	chrome.tabs.sendMessage(tab.id, msg).catch(() => {
+		injectCode(tab).then(() => {
+			chrome.tabs.sendMessage(tab.id, msg);
+		});
 	});
 }
 
