@@ -86,7 +86,7 @@
 }
 
 #a11y-outline .treeview [aria-expanded] {
-  list-style: none;
+	list-style: none;
 }
 
 /* link */
