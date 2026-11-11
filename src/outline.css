@@ -35,7 +35,7 @@
 #a11y-outline header {
 	display: flex;
 	gap: 0.5em;
-	margin: 0 0 1em;
+	margin-block-end: 1em;
 }
 
 #a11y-outline .close,
@@ -52,7 +52,7 @@
 
 #a11y-outline .close {
 	box-sizing: content-box;
-	min-width: 1.2em;
+	min-inline-size: 1.2em;
 	text-align: center;
 }
 
@@ -62,7 +62,7 @@
 
 #a11y-outline ul {
 	margin: 0;
-	padding-left: 1.5em;
+	padding-inline-start: 1.5em;
 	list-style: initial;
 }
 
@@ -72,9 +72,9 @@
 
 #a11y-outline .treeview:empty {
 	box-sizing: border-box;
-	width: 2em;
-	height: 2em;
-	margin: 0 auto;
+	inline-size: 2em;
+	block-size: 2em;
+	margin-inline: auto;
 	border: 3px solid;
 	border-top-color: transparent;
 	border-radius: 50%;
@@ -108,17 +108,17 @@
 
 #a11y-outline .treeview button {
 	box-sizing: content-box;
-	height: auto;
+	block-size: auto;
 
 	/* reset */
 	min-height: 0;
 	position: absolute;
 
 	/* layout */
-	left: -1.3em;
-	top: 0.3em;
+	inset-inline-start: -1.3em;
+	inset-block-start: 0.3em;
 	padding: 0;
-	min-width: 0.8em;
+	min-inline-size: 0.8em;
 	line-height: 0.8;
 
 	text-align: center;
