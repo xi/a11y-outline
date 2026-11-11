@@ -1,3 +1,12 @@
+# 2.5.0 (2026-11-11)
+
+-   prevent duplicate content script injection
+-   remove compatibility code for old callback-based extension API
+-   flow relative CSS
+-   fix: escape regex characters in typeahead
+-   fix: tree focus
+
+
 # 2.4.0 (2026-11-11)
 
 -   update aria-api to 0.9.2
