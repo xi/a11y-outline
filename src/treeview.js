@@ -212,7 +212,7 @@ function buildTree(data, id) {
 			item = item.closest('[role="treeitem"]');
 		}
 		select(item);
-		this.focus();
+		event.currentTarget.focus();
 	});
 
 	updateTree(tree, data, id);
