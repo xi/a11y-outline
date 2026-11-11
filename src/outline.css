@@ -4,7 +4,7 @@
 }
 
 .a11y-outline-target {
-	outline: 5px solid #26c !important;
+	outline: 5px solid light-dark(#26c, #3ae) !important;
 }
 
 #a11y-outline,
@@ -17,9 +17,10 @@
 }
 
 #a11y-outline {
-	--color-border: rgba(0,0,0,0.2);
-	--color-focus: #26c;
-	--color-tint: rgba(0,0,0,0.1);
+	color-scheme: light dark;
+	--color-border: light-dark(rgba(0,0,0,0.2), rgba(255,255,255,0.2));
+	--color-focus: light-dark(#26c, #3ae);
+	--color-tint: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.1));
 
 	font-size: initial;
 	line-height: 1.4;
@@ -127,16 +128,4 @@
 }
 #a11y-outline .treeview [aria-expanded=true] > button::after {
 	content: "−";
-}
-
-@media (prefers-color-scheme: dark) {
-	#a11y-outline {
-		--color-border: rgba(255,255,255,0.2);
-		--color-focus: #3ae;
-		--color-tint: rgba(255,255,255,0.1);
-		color-scheme: dark;
-	}
-	.a11y-outline-target {
-		outline-color: #3ae !important;
-	}
 }
