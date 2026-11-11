@@ -1,17 +1,8 @@
 /* global chrome */
 
-function wrap(fn) {
-	return function(...args) {
-		return new Promise(resolve => fn(...args, resolve));
-	};
-}
-
-var executeScript = wrap(chrome.scripting.executeScript);
-var insertCSS = wrap(chrome.scripting.insertCSS);
-
 function injectCode(tab) {
 	return Promise.all([
-		executeScript({
+		chrome.scripting.executeScript({
 			target: {tabId: tab.id},
 			files: [
 				'/vendor/aria.js',
@@ -19,7 +10,7 @@ function injectCode(tab) {
 				'/src/outline.js',
 			],
 		}),
-		insertCSS({
+		chrome.scripting.insertCSS({
 			target: {tabId: tab.id},
 			files: ['/src/outline.css'],
 		}),
