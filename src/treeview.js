@@ -8,6 +8,9 @@ function indexOf(list, item) {
 var typeaheadString = '';
 var typeaheadTimeout = null;
 function typeahead(c) {
+	if ('.*+?^${}()|[]\\'.includes(c)) {
+		typeaheadString += '\\';
+	}
 	typeaheadString += c;
 
 	clearTimeout(typeaheadTimeout);
@@ -15,7 +18,7 @@ function typeahead(c) {
 		typeaheadString = '';
 	}, 400);
 
-	return typeaheadString;
+	return RegExp('^' + typeaheadString, 'i');
 }
 
 function select(item) {
@@ -118,8 +121,7 @@ function onKeyDown(event) {
 				break;
 			default:
 				if (event.key.length === 1) {
-					var s = typeahead(event.key);
-					var r = new RegExp('^' + s, 'i');
+					var r = typeahead(event.key);
 					nextItem(item, 'down', r);
 				}
 		}
